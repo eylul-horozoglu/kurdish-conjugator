@@ -29,11 +29,8 @@ const verbs = {
 };
 
 const persons = ["ez", "tu", "ew", "em", "hûn", "ew (pl.)"];
-
 const verbSelect = document.getElementById("verb-select");
 const conjugationContainer = document.getElementById("conjugation-container");
-const darkModeToggle = document.getElementById("darkModeToggle");
-const body = document.getElementById("body");
 
 // Populate dropdown menu
 for (const verb in verbs) {
@@ -46,12 +43,12 @@ for (const verb in verbs) {
 function renderTable(verb) {
   const v = verbs[verb].conjugations;
   conjugationContainer.innerHTML = `
-    <h2 class="text-xl font-semibold text-blue-700 dark:text-blue-400">
+    <h2 class="text-xl font-semibold text-blue-700">
       Fiil: <span class="italic">${verb}</span> (${verbs[verb].definition})
     </h2>
     <div class="overflow-x-auto">
-      <table class="min-w-full border border-blue-300 rounded-md text-sm dark:text-gray-200">
-        <thead class="bg-blue-100 text-blue-800 dark:bg-gray-700 dark:text-blue-300">
+      <table class="min-w-full border border-blue-300 rounded-md text-sm">
+        <thead class="bg-blue-100 text-blue-800">
           <tr>
             <th class="p-2 border border-blue-300 text-left">Kişi</th>
             <th class="p-2 border border-blue-300 text-left">Şimdiki Zaman</th>
@@ -60,7 +57,7 @@ function renderTable(verb) {
             <th class="p-2 border border-blue-300 text-left">Gelecek Zaman</th>
           </tr>
         </thead>
-        <tbody class="text-gray-700 dark:text-gray-300">
+        <tbody class="text-gray-700">
           ${persons.map((person, i) => `
             <tr>
               <td class="p-2 border border-blue-200">${person}</td>
@@ -79,13 +76,3 @@ function renderTable(verb) {
 // Initial load
 renderTable(verbSelect.value);
 verbSelect.addEventListener("change", e => renderTable(e.target.value));
-
-// Dark mode toggle
-darkModeToggle.addEventListener("click", () => {
-  body.classList.toggle("dark");
-  if (body.classList.contains("dark")) {
-    darkModeToggle.textContent = "☀️ Açık Mod";
-  } else {
-    darkModeToggle.textContent = "🌙 Koyu Mod";
-  }
-});
