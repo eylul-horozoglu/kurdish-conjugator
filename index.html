@@ -6,16 +6,21 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="app.js" defer></script>
 </head>
-<body class="min-h-screen bg-blue-50 text-gray-800 flex flex-col items-center justify-start p-6 gap-6">
+<body id="body" class="min-h-screen bg-blue-50 text-gray-800 dark:bg-gray-900 dark:text-gray-100 flex flex-col items-center justify-start p-6 gap-6">
 
-  <h1 class="text-3xl font-bold text-blue-800">Kürtçe Fiil Çekimi</h1>
+  <h1 class="text-3xl font-bold text-blue-800 dark:text-blue-400">Kürtçe Fiil Çekimi</h1>
 
-  <label for="verb-select" class="font-semibold text-blue-700">Fiil seçin:</label>
-  <select id="verb-select" class="rounded-md border border-blue-300 p-2 text-gray-700 max-w-xs">
+  <button id="darkModeToggle" 
+    class="px-4 py-2 rounded-md bg-blue-700 text-white hover:bg-blue-800 transition">
+    🌙 Koyu Mod
+  </button>
+
+  <label for="verb-select" class="font-semibold text-blue-700 dark:text-blue-300">Fiil seçin:</label>
+  <select id="verb-select" class="rounded-md border border-blue-300 p-2 text-gray-700 dark:bg-gray-800 dark:text-gray-200 dark:border-gray-600 max-w-xs">
     <!-- JS will populate this -->
   </select>
 
-  <div id="conjugation-container" class="max-w-4xl w-full bg-white rounded-2xl shadow-xl p-6 space-y-6">
+  <div id="conjugation-container" class="max-w-4xl w-full bg-white dark:bg-gray-800 rounded-2xl shadow-xl dark:shadow-gray-700 p-6 space-y-6">
     <!-- Table gets inserted here -->
   </div>
 
