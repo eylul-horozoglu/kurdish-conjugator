@@ -1,0 +1,2 @@
+# kurdish-conjugator
+Kurdish Conjugator
