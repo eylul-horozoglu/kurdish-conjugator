@@ -29,8 +29,11 @@ const verbs = {
 };
 
 const persons = ["ez", "tu", "ew", "em", "hûn", "ew (pl.)"];
+
 const verbSelect = document.getElementById("verb-select");
 const conjugationContainer = document.getElementById("conjugation-container");
+const darkModeToggle = document.getElementById("darkModeToggle");
+const body = document.getElementById("body");
 
 // Populate dropdown menu
 for (const verb in verbs) {
@@ -47,20 +50,20 @@ function renderTable(verb) {
       Fiil: <span class="italic">${verb}</span> (${verbs[verb].definition})
     </h2>
     <div class="overflow-x-auto">
-      <table class="min-w-full border border-blue-300 dark:border-blue-600 rounded-md text-sm">
-        <thead class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-300">
+      <table class="min-w-full border border-blue-300 rounded-md text-sm dark:text-gray-200">
+        <thead class="bg-blue-100 text-blue-800 dark:bg-gray-700 dark:text-blue-300">
           <tr>
-            <th class="p-2 border border-blue-300 dark:border-blue-600 text-left">Kişi</th>
-            <th class="p-2 border border-blue-300 dark:border-blue-600 text-left">Şimdiki Zaman</th>
-            <th class="p-2 border border-blue-300 dark:border-blue-600 text-left">Olumsuz</th>
-            <th class="p-2 border border-blue-300 dark:border-blue-600 text-left">Geçmiş Zaman</th>
-            <th class="p-2 border border-blue-300 dark:border-blue-600 text-left">Gelecek Zaman</th>
+            <th class="p-2 border border-blue-300 text-left">Kişi</th>
+            <th class="p-2 border border-blue-300 text-left">Şimdiki Zaman</th>
+            <th class="p-2 border border-blue-300 text-left">Olumsuz</th>
+            <th class="p-2 border border-blue-300 text-left">Geçmiş Zaman</th>
+            <th class="p-2 border border-blue-300 text-left">Gelecek Zaman</th>
           </tr>
         </thead>
         <tbody class="text-gray-700 dark:text-gray-300">
           ${persons.map((person, i) => `
             <tr>
-              <td class="p-2 border border-blue-200 dark:border-blue-700">${person}</td>
+              <td class="p-2 border border-blue-200">${person}</td>
               <td class="p-2">${v.present[i]}</td>
               <td class="p-2">${v.presentNegative[i]}</td>
               <td class="p-2">${v.past[i]}</td>
@@ -77,16 +80,12 @@ function renderTable(verb) {
 renderTable(verbSelect.value);
 verbSelect.addEventListener("change", e => renderTable(e.target.value));
 
-// Dark mode toggle button logic
-const toggleBtn = document.getElementById("darkModeToggle");
-const body = document.getElementById("body");
-
-toggleBtn.addEventListener("click", () => {
+// Dark mode toggle
+darkModeToggle.addEventListener("click", () => {
   body.classList.toggle("dark");
-  
-  if(body.classList.contains("dark")) {
-    toggleBtn.textContent = "☀️ Açık Mod";
+  if (body.classList.contains("dark")) {
+    darkModeToggle.textContent = "☀️ Açık Mod";
   } else {
-    toggleBtn.textContent = "🌙 Koyu Mod";
+    darkModeToggle.textContent = "🌙 Koyu Mod";
   }
 });
