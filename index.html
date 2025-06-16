@@ -4,22 +4,21 @@
   <meta charset="UTF-8" />
   <title>Kürtçe Fiil Çekimi</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- PapaParse CSV parser -->
   <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
   <style>
     body { min-height: 100vh; }
   </style>
 </head>
-<body class="min-h-screen bg-blue-50 text-gray-800 flex flex-col items-center justify-start p-6 gap-6">
+<body class="min-h-screen bg-pink-50 text-purple-900 flex flex-col items-center justify-start p-6 gap-6">
 
-  <h1 class="text-3xl font-bold text-blue-800">Kürtçe Fiil Çekimi</h1>
+  <h1 class="text-3xl font-bold text-pink-600">Kürtçe Fiil Çekimi</h1>
 
-  <label for="verb-select" class="font-semibold text-blue-700">Fiil seçin:</label>
-  <select id="verb-select" class="rounded-md border border-blue-300 p-2 text-gray-700 max-w-xs">
+  <label for="verb-select" class="font-semibold text-purple-700">Fiil seçin:</label>
+  <select id="verb-select" class="rounded-md border border-pink-300 p-2 text-purple-800 bg-white shadow-sm max-w-xs focus:outline-none focus:ring-2 focus:ring-pink-400">
     <!-- options will be populated dynamically -->
   </select>
 
-  <div id="conjugation-container" class="max-w-4xl w-full bg-white rounded-2xl shadow-xl p-6 space-y-6">
+  <div id="conjugation-container" class="max-w-4xl w-full bg-white rounded-2xl shadow-xl p-6 space-y-6 border border-purple-100">
     <!-- conjugation table will appear here -->
   </div>
 
@@ -30,7 +29,6 @@
 
     let verbs = {};
 
-    // Load and parse the CSV file
     fetch('Kurdish_Verbs.csv')
       .then(response => response.text())
       .then(csvText => {
@@ -71,7 +69,7 @@
     }
 
     function populateDropdown() {
-      verbSelect.innerHTML = ''; // clear previous options
+      verbSelect.innerHTML = '';
       for (const verb in verbs) {
         const option = document.createElement("option");
         option.value = verb;
@@ -88,24 +86,24 @@
       }
       const v = verbs[verb].conjugations;
       conjugationContainer.innerHTML = `
-        <h2 class="text-xl font-semibold text-blue-700">
+        <h2 class="text-xl font-semibold text-pink-700">
           Fiil: <span class="italic">${verb}</span> (${verbs[verb].definition})
         </h2>
         <div class="overflow-x-auto">
-          <table class="min-w-full border border-blue-300 rounded-md text-sm">
-            <thead class="bg-blue-100 text-blue-800">
+          <table class="min-w-full border border-pink-200 rounded-md text-sm">
+            <thead class="bg-pink-100 text-purple-800">
               <tr>
-                <th class="p-2 border border-blue-300 text-left">Kişi</th>
-                <th class="p-2 border border-blue-300 text-left">Şimdiki Zaman</th>
-                <th class="p-2 border border-blue-300 text-left">Olumsuz</th>
-                <th class="p-2 border border-blue-300 text-left">Geçmiş Zaman</th>
-                <th class="p-2 border border-blue-300 text-left">Gelecek Zaman</th>
+                <th class="p-2 border border-pink-300 text-left">Kişi</th>
+                <th class="p-2 border border-pink-300 text-left">Şimdiki Zaman</th>
+                <th class="p-2 border border-pink-300 text-left">Olumsuz</th>
+                <th class="p-2 border border-pink-300 text-left">Geçmiş Zaman</th>
+                <th class="p-2 border border-pink-300 text-left">Gelecek Zaman</th>
               </tr>
             </thead>
-            <tbody class="text-gray-700">
+            <tbody class="text-purple-900">
               ${persons.map((person, i) => `
-                <tr>
-                  <td class="p-2 border border-blue-200">${person}</td>
+                <tr class="hover:bg-pink-50">
+                  <td class="p-2 border border-pink-200">${person}</td>
                   <td class="p-2">${v.present[i]}</td>
                   <td class="p-2">${v.presentNegative[i]}</td>
                   <td class="p-2">${v.past[i]}</td>
