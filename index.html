@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Kürtçe Fiil Çekimi</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="app.js" defer></script>
+</head>
+<body class="min-h-screen bg-blue-50 text-gray-800 flex flex-col items-center justify-start p-6 gap-6">
+
+  <h1 class="text-3xl font-bold text-blue-800">Kürtçe Fiil Çekimi</h1>
+
+  <label for="verb-select" class="font-semibold text-blue-700">Fiil seçin:</label>
+  <select id="verb-select" class="rounded-md border border-blue-300 p-2 text-gray-700 max-w-xs">
+    <!-- JS will populate this -->
+  </select>
+
+  <div id="conjugation-container" class="max-w-4xl w-full bg-white rounded-2xl shadow-xl p-6 space-y-6">
+    <!-- Table gets inserted here -->
+  </div>
+
+</body>
+</html>
