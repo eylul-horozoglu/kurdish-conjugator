@@ -14,6 +14,13 @@
 
   <h1 class="text-3xl font-bold text-blue-800">Kürtçe Fiil Çekimi</h1>
 
+  <input
+    type="text"
+    id="verb-search"
+    placeholder="Fiil ara (Kürtçe ya da Türkçe)..."
+    class="rounded-md border border-blue-300 p-2 text-gray-700 max-w-xs"
+  />
+
   <label for="verb-select" class="font-semibold text-blue-700">Fiil seçin:</label>
   <select id="verb-select" class="rounded-md border border-blue-300 p-2 text-gray-700 max-w-xs">
     <!-- options will be populated dynamically -->
@@ -26,11 +33,11 @@
   <script>
     const persons = ["ez", "tu", "ew", "em", "hûn", "ew (pl.)"];
     const verbSelect = document.getElementById("verb-select");
+    const searchInput = document.getElementById("verb-search");
     const conjugationContainer = document.getElementById("conjugation-container");
 
     let verbs = {};
 
-    // Load and parse the CSV file
     fetch('Kurdish_Verbs.csv')
       .then(response => response.text())
       .then(csvText => {
@@ -70,15 +77,31 @@
       });
     }
 
-    function populateDropdown() {
-      verbSelect.innerHTML = ''; // clear previous options
-      for (const verb in verbs) {
+    function populateDropdown(filter = "") {
+      const query = filter.toLowerCase();
+      verbSelect.innerHTML = "";
+
+      const matches = Object.entries(verbs).filter(([verb, data]) =>
+        verb.toLowerCase().includes(query) ||
+        data.definition.toLowerCase().includes(query)
+      );
+
+      if (matches.length === 0) {
+        const option = document.createElement("option");
+        option.textContent = "Eşleşen fiil bulunamadı.";
+        option.disabled = true;
+        verbSelect.appendChild(option);
+        conjugationContainer.innerHTML = "";
+        return;
+      }
+
+      matches.forEach(([verb, data], index) => {
         const option = document.createElement("option");
         option.value = verb;
-        option.textContent = `${verb} (${verbs[verb].definition})`;
+        option.textContent = `${verb} (${data.definition})`;
         verbSelect.appendChild(option);
-      }
-      verbSelect.addEventListener("change", e => renderTable(e.target.value));
+        if (index === 0) renderTable(verb);
+      });
     }
 
     function renderTable(verb) {
@@ -117,6 +140,9 @@
         </div>
       `;
     }
+
+    verbSelect.addEventListener("change", e => renderTable(e.target.value));
+    searchInput.addEventListener("input", e => populateDropdown(e.target.value));
   </script>
 
 </body>
