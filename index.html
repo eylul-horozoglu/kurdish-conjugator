@@ -107,14 +107,22 @@
         const nv = normalizeForSearch(verb), nd = normalizeForSearch(data.definition);
         return nv.includes(query) || nd.includes(query);
       });
+
       matches.forEach(([verb, data], index) => {
         const opt = document.createElement("option");
         opt.value = verb;
         opt.textContent = `${verb} (${data.definition})`;
         verbSelect.appendChild(opt);
-        if (index === 0) renderTable(verb, currentPalette);
+
+        if (index === 0) {
+          verbSelect.value = verb; // ✅ make sure the dropdown has this selected
+          const rand = colorPalettes[Math.floor(Math.random() * colorPalettes.length)];
+          applyPalette(rand);
+          renderTable(verb, rand);
+        }
       });
     }
+
 
     function renderTable(verb, palette) {
       if (!verb || !verbs[verb]) return;
