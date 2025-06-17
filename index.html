@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="tr">
+
 <head>
   <meta charset="UTF-8" />
   <title>Kürtçe Fiil Çekimi</title>
@@ -7,19 +8,18 @@
   <!-- PapaParse CSV parser -->
   <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
   <style>
-    body { min-height: 100vh; }
+    body {
+      min-height: 100vh;
+    }
   </style>
 </head>
+
 <body class="min-h-screen bg-blue-50 text-gray-800 flex flex-col items-center justify-start p-6 gap-6">
 
   <h1 class="text-3xl font-bold text-blue-800">Kürtçe Fiil Çekimi</h1>
 
-  <input
-    type="text"
-    id="verb-search"
-    placeholder="Fiil ara (Kürtçe ya da Türkçe)..."
-    class="rounded-md border border-blue-300 p-2 text-gray-700 max-w-xs"
-  />
+  <input type="text" id="verb-search" placeholder="Fiil ara (Kürtçe ya da Türkçe)..."
+    class="rounded-md border border-blue-300 p-2 text-gray-700 max-w-xs" />
 
   <label for="verb-select" class="font-semibold text-blue-700">Fiil seçin:</label>
   <select id="verb-select" class="rounded-md border border-blue-300 p-2 text-gray-700 max-w-xs">
@@ -73,6 +73,7 @@
         inputBorder: 'border-purple-300',
         labelText: 'text-purple-700',
       },
+
       {
         name: 'orange',
         bodyBg: 'bg-orange-50',
@@ -83,13 +84,74 @@
         containerBg: 'bg-white',
         inputBorder: 'border-orange-300',
         labelText: 'text-orange-700',
+      },
+
+      {
+        name: 'rose',
+        bodyBg: 'bg-rose-50',
+        headingText: 'text-rose-800',
+        tableHeadBg: 'bg-rose-100',
+        tableHeadText: 'text-rose-800',
+        border: 'border-rose-300',
+        containerBg: 'bg-white',
+        inputBorder: 'border-rose-300',
+        labelText: 'text-rose-700',
+      },
+
+      {
+        name: 'yellow',
+        bodyBg: 'bg-yellow-50',
+        headingText: 'text-yellow-800',
+        tableHeadBg: 'bg-yellow-100',
+        tableHeadText: 'text-yellow-800',
+        border: 'border-yellow-300',
+        containerBg: 'bg-white',
+        inputBorder: 'border-yellow-300',
+        labelText: 'text-yellow-700',
+      },
+
+      {
+        name: 'teal',
+        bodyBg: 'bg-teal-50',
+        headingText: 'text-teal-800',
+        tableHeadBg: 'bg-teal-100',
+        tableHeadText: 'text-teal-800',
+        border: 'border-teal-300',
+        containerBg: 'bg-white',
+        inputBorder: 'border-teal-300',
+        labelText: 'text-teal-700',
+      },
+
+      {
+        name: 'indigo',
+        bodyBg: 'bg-indigo-50',
+        headingText: 'text-indigo-800',
+        tableHeadBg: 'bg-indigo-100',
+        tableHeadText: 'text-indigo-800',
+        border: 'border-indigo-300',
+        containerBg: 'bg-white',
+        inputBorder: 'border-indigo-300',
+        labelText: 'text-indigo-700',
+      },
+
+      {
+        name: 'fuchsia',
+        bodyBg: 'bg-fuchsia-50',
+        headingText: 'text-fuchsia-800',
+        tableHeadBg: 'bg-fuchsia-100',
+        tableHeadText: 'text-fuchsia-800',
+        border: 'border-fuchsia-300',
+        containerBg: 'bg-white',
+        inputBorder: 'border-fuchsia-300',
+        labelText: 'text-fuchsia-700',
       }
+
     ];
 
     function normalizeForSearch(str) {
       return str
         .toLowerCase()
-        .replace(/[\u0131îíìï]/g, 'i')  
+        .replace(/[\u0131îíìï]/g, 'i')
         .replace(/ş/g, 's')
         .replace(/ç/g, 'c')
         .replace(/ğ/g, 'g')
@@ -253,4 +315,5 @@
     searchInput.addEventListener("input", e => populateDropdown(e.target.value));
   </script>
 </body>
+
 </html>
