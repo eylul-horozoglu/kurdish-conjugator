@@ -312,7 +312,12 @@
       renderTable(e.target.value, randomPalette);
     });
 
-    searchInput.addEventListener("input", e => populateDropdown(e.target.value));
+    searchInput.addEventListener("input", e => {
+      const randomPalette = colorPalettes[Math.floor(Math.random() * colorPalettes.length)];
+      applyPalette(randomPalette);
+      populateDropdown(e.target.value);
+    });
+
   </script>
 </body>
 
