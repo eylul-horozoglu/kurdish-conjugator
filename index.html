@@ -39,7 +39,6 @@
     let verbs = {};
     let currentPalette = null;
 
-    // Palettes with Tailwind classes for bg, text, borders, etc.
     const colorPalettes = [
       {
         name: 'blue',
@@ -90,7 +89,7 @@
     function normalizeForSearch(str) {
       return str
         .toLowerCase()
-        .replace(/[\u0131îíìï]/g, 'i')  // ı, î, í, ì, ï → i
+        .replace(/[\u0131îíìï]/g, 'i')  
         .replace(/ş/g, 's')
         .replace(/ç/g, 'c')
         .replace(/ğ/g, 'g')
@@ -100,37 +99,29 @@
         .replace(/û/g, 'u')
         .replace(/á/g, 'a')
         .replace(/é/g, 'e')
-        .replace(/â/g, 'a')
-        ;
+        .replace(/â/g, 'a');
     }
 
-    // Apply palette classes dynamically
     function applyPalette(palette) {
       if (!palette) return;
 
-      // Remove all palette body bg classes first
       document.body.classList.remove(...colorPalettes.map(p => p.bodyBg));
       document.body.classList.add(palette.bodyBg);
 
-      // Update h1 heading color
       const heading = document.querySelector('h1.text-3xl');
       heading.classList.remove(...colorPalettes.map(p => p.headingText));
       heading.classList.add(palette.headingText);
 
-      // Update input border color
       searchInput.classList.remove(...colorPalettes.map(p => p.inputBorder));
       searchInput.classList.add(palette.inputBorder);
 
-      // Update label text color
       const label = document.querySelector('label[for="verb-select"]');
       label.classList.remove(...colorPalettes.map(p => p.labelText));
       label.classList.add(palette.labelText);
 
-      // Update select border color
       verbSelect.classList.remove(...colorPalettes.map(p => p.inputBorder));
       verbSelect.classList.add(palette.inputBorder);
 
-      // Update conjugation container background
       conjugationContainer.classList.remove(...colorPalettes.map(p => p.containerBg));
       conjugationContainer.classList.add(palette.containerBg);
 
@@ -218,12 +209,12 @@
         return;
       }
       const v = verbs[verb].conjugations;
-      const p = palette || currentPalette || colorPalettes[0]; // fallback palette
+      const p = palette || currentPalette || colorPalettes[0];
 
       conjugationContainer.innerHTML = `
         <h2 class="text-xl font-semibold ${p.headingText}">
-          Fiil: <span class="italic">${verb}</span>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          Fiil: <span class="italic">${verb}</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          Anlam: <span class="italic">${verbs[verb].definition}</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           Kök: <span class="italic">${verbs[verb].root}</span>
         </h2>
         <div class="overflow-x-auto">
