@@ -37,8 +37,56 @@
     const conjugationContainer = document.getElementById("conjugation-container");
 
     let verbs = {};
+    let currentPalette = null;
 
-    // Normalize special characters for search to plain ascii letters
+    // Palettes with Tailwind classes for bg, text, borders, etc.
+    const colorPalettes = [
+      {
+        name: 'blue',
+        bodyBg: 'bg-blue-50',
+        headingText: 'text-blue-800',
+        tableHeadBg: 'bg-blue-100',
+        tableHeadText: 'text-blue-800',
+        border: 'border-blue-300',
+        containerBg: 'bg-white',
+        inputBorder: 'border-blue-300',
+        labelText: 'text-blue-700',
+      },
+      {
+        name: 'green',
+        bodyBg: 'bg-green-50',
+        headingText: 'text-green-800',
+        tableHeadBg: 'bg-green-100',
+        tableHeadText: 'text-green-800',
+        border: 'border-green-300',
+        containerBg: 'bg-white',
+        inputBorder: 'border-green-300',
+        labelText: 'text-green-700',
+      },
+      {
+        name: 'purple',
+        bodyBg: 'bg-purple-50',
+        headingText: 'text-purple-800',
+        tableHeadBg: 'bg-purple-100',
+        tableHeadText: 'text-purple-800',
+        border: 'border-purple-300',
+        containerBg: 'bg-white',
+        inputBorder: 'border-purple-300',
+        labelText: 'text-purple-700',
+      },
+      {
+        name: 'orange',
+        bodyBg: 'bg-orange-50',
+        headingText: 'text-orange-800',
+        tableHeadBg: 'bg-orange-100',
+        tableHeadText: 'text-orange-800',
+        border: 'border-orange-300',
+        containerBg: 'bg-white',
+        inputBorder: 'border-orange-300',
+        labelText: 'text-orange-700',
+      }
+    ];
+
     function normalizeForSearch(str) {
       return str
         .toLowerCase()
@@ -53,8 +101,40 @@
         .replace(/á/g, 'a')
         .replace(/é/g, 'e')
         .replace(/â/g, 'a')
-        // Add more replacements here if needed
         ;
+    }
+
+    // Apply palette classes dynamically
+    function applyPalette(palette) {
+      if (!palette) return;
+
+      // Remove all palette body bg classes first
+      document.body.classList.remove(...colorPalettes.map(p => p.bodyBg));
+      document.body.classList.add(palette.bodyBg);
+
+      // Update h1 heading color
+      const heading = document.querySelector('h1.text-3xl');
+      heading.classList.remove(...colorPalettes.map(p => p.headingText));
+      heading.classList.add(palette.headingText);
+
+      // Update input border color
+      searchInput.classList.remove(...colorPalettes.map(p => p.inputBorder));
+      searchInput.classList.add(palette.inputBorder);
+
+      // Update label text color
+      const label = document.querySelector('label[for="verb-select"]');
+      label.classList.remove(...colorPalettes.map(p => p.labelText));
+      label.classList.add(palette.labelText);
+
+      // Update select border color
+      verbSelect.classList.remove(...colorPalettes.map(p => p.inputBorder));
+      verbSelect.classList.add(palette.inputBorder);
+
+      // Update conjugation container background
+      conjugationContainer.classList.remove(...colorPalettes.map(p => p.containerBg));
+      conjugationContainer.classList.add(palette.containerBg);
+
+      currentPalette = palette;
     }
 
     fetch('Kurdish_Verbs.csv')
@@ -63,7 +143,9 @@
         const parsed = Papa.parse(csvText, { header: true, skipEmptyLines: true });
         buildVerbsObject(parsed.data);
         populateDropdown();
-        renderTable(verbSelect.value);
+        const randomPalette = colorPalettes[Math.floor(Math.random() * colorPalettes.length)];
+        applyPalette(randomPalette);
+        renderTable(verbSelect.value, randomPalette);
       })
       .catch(err => {
         conjugationContainer.innerHTML = "<p class='text-red-600'>CSV dosyası yüklenirken hata oluştu.</p>";
@@ -105,10 +187,8 @@
         const normVerb = normalizeForSearch(verb);
         const normDef = normalizeForSearch(data.definition);
 
-        // Check verb or definition
         if (normVerb.includes(query) || normDef.includes(query)) return true;
 
-        // Check all conjugated forms for match
         return Object.values(data.conjugations).some(tenseArray =>
           tenseArray.some(form => form && normalizeForSearch(form).includes(query))
         );
@@ -128,37 +208,39 @@
         option.value = verb;
         option.textContent = `${verb} (${data.definition})`;
         verbSelect.appendChild(option);
-        if (index === 0) renderTable(verb);
+        if (index === 0) renderTable(verb, currentPalette);
       });
     }
 
-    function renderTable(verb) {
+    function renderTable(verb, palette) {
       if (!verb || !verbs[verb]) {
         conjugationContainer.innerHTML = "<p>Fiil seçiniz.</p>";
         return;
       }
       const v = verbs[verb].conjugations;
-      const root = verbs[verb].root || "";
+      const p = palette || currentPalette || colorPalettes[0]; // fallback palette
+
       conjugationContainer.innerHTML = `
-        <h2 class="text-xl font-semibold text-blue-700 flex justify-start items-center gap-8">
-          <span>Fiil: <span class="italic">${verb}</span> (${verbs[verb].definition})</span>
-          <span>Kök: <span class="italic">${root}</span></span>
+        <h2 class="text-xl font-semibold ${p.headingText}">
+          Fiil: <span class="italic">${verb}</span>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          Kök: <span class="italic">${verbs[verb].root}</span>
         </h2>
         <div class="overflow-x-auto">
-          <table class="min-w-full border border-blue-300 rounded-md text-sm">
-            <thead class="bg-blue-100 text-blue-800">
+          <table class="min-w-full border ${p.border} rounded-md text-sm">
+            <thead class="${p.tableHeadBg} ${p.tableHeadText}">
               <tr>
-                <th class="p-2 border border-blue-300 text-left">Kişi</th>
-                <th class="p-2 border border-blue-300 text-left">Şimdiki Zaman</th>
-                <th class="p-2 border border-blue-300 text-left">Olumsuz</th>
-                <th class="p-2 border border-blue-300 text-left">Geçmiş Zaman</th>
-                <th class="p-2 border border-blue-300 text-left">Gelecek Zaman</th>
+                <th class="p-2 border ${p.border} text-left">Kişi</th>
+                <th class="p-2 border ${p.border} text-left">Şimdiki Zaman</th>
+                <th class="p-2 border ${p.border} text-left">Olumsuz</th>
+                <th class="p-2 border ${p.border} text-left">Geçmiş Zaman</th>
+                <th class="p-2 border ${p.border} text-left">Gelecek Zaman</th>
               </tr>
             </thead>
             <tbody class="text-gray-700">
               ${persons.map((person, i) => `
                 <tr>
-                  <td class="p-2 border border-blue-200">${person}</td>
+                  <td class="p-2 border ${p.border}">${person}</td>
                   <td class="p-2">${v.present[i]}</td>
                   <td class="p-2">${v.presentNegative[i]}</td>
                   <td class="p-2">${v.past[i]}</td>
@@ -171,7 +253,12 @@
       `;
     }
 
-    verbSelect.addEventListener("change", e => renderTable(e.target.value));
+    verbSelect.addEventListener("change", e => {
+      const randomPalette = colorPalettes[Math.floor(Math.random() * colorPalettes.length)];
+      applyPalette(randomPalette);
+      renderTable(e.target.value, randomPalette);
+    });
+
     searchInput.addEventListener("input", e => populateDropdown(e.target.value));
   </script>
 </body>
