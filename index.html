@@ -1,149 +1,148 @@
-<!DOCTYPE html>
-<html lang="tr">
-<head>
-  <meta charset="UTF-8" />
-  <title>Kürtçe Fiil Çekimi</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- PapaParse CSV parser -->
-  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
-  <style>
-    body { min-height: 100vh; }
-  </style>
-</head>
-<body class="min-h-screen bg-blue-50 text-gray-800 flex flex-col items-center justify-start p-6 gap-6">
+<script>
+  const persons = ["ez", "tu", "ew", "em", "hûn", "ew (pl.)"];
+  const verbSelect = document.getElementById("verb-select");
+  const searchInput = document.getElementById("verb-search");
+  const conjugationContainer = document.getElementById("conjugation-container");
 
-  <h1 class="text-3xl font-bold text-blue-800">Kürtçe Fiil Çekimi</h1>
+  let verbs = {};
 
-  <input
-    type="text"
-    id="verb-search"
-    placeholder="Fiil ara (Kürtçe ya da Türkçe)..."
-    class="rounded-md border border-blue-300 p-2 text-gray-700 max-w-xs"
-  />
+  function normalizeForSearch(str) {
+    return str
+      .toLowerCase()
+      .normalize("NFD") // decompose accents
+      .replace(/[\u0300-\u036f]/g, "") // remove diacritics
+      .replace(/[îıi]/g, "i")   // all i variants → i
+      .replace(/ş/g, "s")
+      .replace(/ç/g, "c")
+      .replace(/ü/g, "u")
+      .replace(/ğ/g, "g")
+      .replace(/ö/g, "o")
+      .replace(/ê/g, "e")
+      .replace(/û/g, "u");
+  }
 
-  <label for="verb-select" class="font-semibold text-blue-700">Fiil seçin:</label>
-  <select id="verb-select" class="rounded-md border border-blue-300 p-2 text-gray-700 max-w-xs">
-    <!-- options will be populated dynamically -->
-  </select>
+  // Build the verbs object from CSV data
+  function buildVerbsObject(data) {
+    data.forEach(row => {
+      verbs[row.verb] = {
+        definition: row.definition,
+        conjugations: {
+          present: [
+            row.present_1, row.present_2, row.present_3,
+            row.present_4, row.present_5, row.present_6
+          ],
+          presentNegative: [
+            row.presentNegative_1, row.presentNegative_2, row.presentNegative_3,
+            row.presentNegative_4, row.presentNegative_5, row.presentNegative_6
+          ],
+          past: [
+            row.past_1, row.past_2, row.past_3,
+            row.past_4, row.past_5, row.past_6
+          ],
+          future: [
+            row.future_1, row.future_2, row.future_3,
+            row.future_4, row.future_5, row.future_6
+          ]
+        }
+      };
+    });
+  }
 
-  <div id="conjugation-container" class="max-w-4xl w-full bg-white rounded-2xl shadow-xl p-6 space-y-6">
-    <!-- conjugation table will appear here -->
-  </div>
+  // Search helper: normalize all searchable forms into a flat array
+  function getSearchableForms(verb, data) {
+    // collect verb, definition, and all conjugations in one array
+    return [
+      verb,
+      data.definition,
+      ...data.conjugations.present,
+      ...data.conjugations.presentNegative,
+      ...data.conjugations.past,
+      ...data.conjugations.future
+    ].filter(Boolean); // remove null/undefined
+  }
 
-  <script>
-    const persons = ["ez", "tu", "ew", "em", "hûn", "ew (pl.)"];
-    const verbSelect = document.getElementById("verb-select");
-    const searchInput = document.getElementById("verb-search");
-    const conjugationContainer = document.getElementById("conjugation-container");
+  // Populate dropdown based on search input
+  function populateDropdown(filter = "") {
+    const query = normalizeForSearch(filter);
+    verbSelect.innerHTML = "";
 
-    let verbs = {};
+    const matches = Object.entries(verbs).filter(([verb, data]) => {
+      const forms = getSearchableForms(verb, data);
+      // check if any normalized form includes the normalized query
+      return forms.some(form => normalizeForSearch(form).includes(query));
+    });
 
-    fetch('Kurdish_Verbs.csv')
-      .then(response => response.text())
-      .then(csvText => {
-        const parsed = Papa.parse(csvText, { header: true, skipEmptyLines: true });
-        buildVerbsObject(parsed.data);
-        populateDropdown();
-        renderTable(verbSelect.value);
-      })
-      .catch(err => {
-        conjugationContainer.innerHTML = "<p class='text-red-600'>CSV dosyası yüklenirken hata oluştu.</p>";
-        console.error("Error loading CSV:", err);
-      });
-
-    function buildVerbsObject(data) {
-      data.forEach(row => {
-        verbs[row.verb] = {
-          definition: row.definition,
-          conjugations: {
-            present: [
-              row.present_1, row.present_2, row.present_3,
-              row.present_4, row.present_5, row.present_6
-            ],
-            presentNegative: [
-              row.presentNegative_1, row.presentNegative_2, row.presentNegative_3,
-              row.presentNegative_4, row.presentNegative_5, row.presentNegative_6
-            ],
-            past: [
-              row.past_1, row.past_2, row.past_3,
-              row.past_4, row.past_5, row.past_6
-            ],
-            future: [
-              row.future_1, row.future_2, row.future_3,
-              row.future_4, row.future_5, row.future_6
-            ]
-          }
-        };
-      });
+    if (matches.length === 0) {
+      const option = document.createElement("option");
+      option.textContent = "Eşleşen fiil bulunamadı.";
+      option.disabled = true;
+      verbSelect.appendChild(option);
+      conjugationContainer.innerHTML = "";
+      return;
     }
 
-    function populateDropdown(filter = "") {
-      const query = filter.toLowerCase();
-      verbSelect.innerHTML = "";
+    matches.forEach(([verb, data], index) => {
+      const option = document.createElement("option");
+      option.value = verb;
+      option.textContent = `${verb} (${data.definition})`;
+      verbSelect.appendChild(option);
+      if (index === 0) renderTable(verb);
+    });
+  }
 
-      const matches = Object.entries(verbs).filter(([verb, data]) =>
-        verb.toLowerCase().includes(query) ||
-        data.definition.toLowerCase().includes(query)
-      );
-
-      if (matches.length === 0) {
-        const option = document.createElement("option");
-        option.textContent = "Eşleşen fiil bulunamadı.";
-        option.disabled = true;
-        verbSelect.appendChild(option);
-        conjugationContainer.innerHTML = "";
-        return;
-      }
-
-      matches.forEach(([verb, data], index) => {
-        const option = document.createElement("option");
-        option.value = verb;
-        option.textContent = `${verb} (${data.definition})`;
-        verbSelect.appendChild(option);
-        if (index === 0) renderTable(verb);
-      });
+  // Render conjugation table for the selected verb
+  function renderTable(verb) {
+    if (!verb || !verbs[verb]) {
+      conjugationContainer.innerHTML = "<p>Fiil seçiniz.</p>";
+      return;
     }
-
-    function renderTable(verb) {
-      if (!verb || !verbs[verb]) {
-        conjugationContainer.innerHTML = "<p>Fiil seçiniz.</p>";
-        return;
-      }
-      const v = verbs[verb].conjugations;
-      conjugationContainer.innerHTML = `
-        <h2 class="text-xl font-semibold text-blue-700">
-          Fiil: <span class="italic">${verb}</span> (${verbs[verb].definition})
-        </h2>
-        <div class="overflow-x-auto">
-          <table class="min-w-full border border-blue-300 rounded-md text-sm">
-            <thead class="bg-blue-100 text-blue-800">
+    const v = verbs[verb].conjugations;
+    conjugationContainer.innerHTML = `
+      <h2 class="text-xl font-semibold text-blue-700">
+        Fiil: <span class="italic">${verb}</span> (${verbs[verb].definition})
+      </h2>
+      <div class="overflow-x-auto">
+        <table class="min-w-full border border-blue-300 rounded-md text-sm">
+          <thead class="bg-blue-100 text-blue-800">
+            <tr>
+              <th class="p-2 border border-blue-300 text-left">Kişi</th>
+              <th class="p-2 border border-blue-300 text-left">Şimdiki Zaman</th>
+              <th class="p-2 border border-blue-300 text-left">Olumsuz</th>
+              <th class="p-2 border border-blue-300 text-left">Geçmiş Zaman</th>
+              <th class="p-2 border border-blue-300 text-left">Gelecek Zaman</th>
+            </tr>
+          </thead>
+          <tbody class="text-gray-700">
+            ${persons.map((person, i) => `
               <tr>
-                <th class="p-2 border border-blue-300 text-left">Kişi</th>
-                <th class="p-2 border border-blue-300 text-left">Şimdiki Zaman</th>
-                <th class="p-2 border border-blue-300 text-left">Olumsuz</th>
-                <th class="p-2 border border-blue-300 text-left">Geçmiş Zaman</th>
-                <th class="p-2 border border-blue-300 text-left">Gelecek Zaman</th>
+                <td class="p-2 border border-blue-200">${person}</td>
+                <td class="p-2">${v.present[i]}</td>
+                <td class="p-2">${v.presentNegative[i]}</td>
+                <td class="p-2">${v.past[i]}</td>
+                <td class="p-2">${v.future[i]}</td>
               </tr>
-            </thead>
-            <tbody class="text-gray-700">
-              ${persons.map((person, i) => `
-                <tr>
-                  <td class="p-2 border border-blue-200">${person}</td>
-                  <td class="p-2">${v.present[i]}</td>
-                  <td class="p-2">${v.presentNegative[i]}</td>
-                  <td class="p-2">${v.past[i]}</td>
-                  <td class="p-2">${v.future[i]}</td>
-                </tr>
-              `).join('')}
-            </tbody>
-          </table>
-        </div>
-      `;
-    }
+            `).join('')}
+          </tbody>
+        </table>
+      </div>
+    `;
+  }
 
-    verbSelect.addEventListener("change", e => renderTable(e.target.value));
-    searchInput.addEventListener("input", e => populateDropdown(e.target.value));
-  </script>
+  // Initial fetch and setup
+  fetch('Kurdish_Verbs.csv')
+    .then(response => response.text())
+    .then(csvText => {
+      const parsed = Papa.parse(csvText, { header: true, skipEmptyLines: true });
+      buildVerbsObject(parsed.data);
+      populateDropdown();
+      renderTable(verbSelect.value);
+    })
+    .catch(err => {
+      conjugationContainer.innerHTML = "<p class='text-red-600'>CSV dosyası yüklenirken hata oluştu.</p>";
+      console.error("Error loading CSV:", err);
+    });
 
-</body>
-</html>
+  // Event listeners
+  verbSelect.addEventListener("change", e => renderTable(e.target.value));
+  searchInput.addEventListener("input", e => populateDropdown(e.target.value));
+</script>
