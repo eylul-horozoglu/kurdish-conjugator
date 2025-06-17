@@ -74,7 +74,7 @@
       data.forEach(row => {
         verbs[row.verb] = {
           definition: row.definition,
-          root: row.root,  // added root property
+          root: row.root,
           conjugations: {
             present: [
               row.present_1, row.present_2, row.present_3,
@@ -138,9 +138,9 @@
         return;
       }
       const v = verbs[verb].conjugations;
-      const root = verbs[verb].root || "-";
+      const root = verbs[verb].root || "";
       conjugationContainer.innerHTML = `
-        <h2 class="text-xl font-semibold text-blue-700 flex justify-between items-center">
+        <h2 class="text-xl font-semibold text-blue-700 flex justify-start items-center gap-8">
           <span>Fiil: <span class="italic">${verb}</span> (${verbs[verb].definition})</span>
           <span>Kök: <span class="italic">${root}</span></span>
         </h2>
