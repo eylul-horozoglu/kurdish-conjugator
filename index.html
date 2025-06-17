@@ -168,7 +168,17 @@
       const input = e.target.value.trim();
       if (!input) return suggestions.classList.add("hidden");
       const query = normalizeForSearch(input);
-      const matches = Object.entries(verbs).filter(([v, d]) => normalizeForSearch(v).includes(query) || normalizeForSearch(d.definition).includes(query));
+      const matches = Object.entries(verbs).filter(([v, d]) => {
+        const verbNorm = normalizeForSearch(v);
+        const defNorm = normalizeForSearch(d.definition);
+        const forms = Object.values(d.conjugations).flat(); // all forms
+
+        return (
+          verbNorm.includes(query) ||
+          defNorm.includes(query) ||
+          forms.some(form => normalizeForSearch(form || '').includes(query))
+        );
+      });
       suggestions.innerHTML = matches.map(([v, d]) => `<li class="p-2 border-b last:border-none">${v} (${d.definition})</li>`).join('');
       suggestions.classList.remove("hidden");
       suggestions.querySelectorAll("li").forEach(li => {
