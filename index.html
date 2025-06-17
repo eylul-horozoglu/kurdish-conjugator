@@ -5,279 +5,125 @@
   <meta charset="UTF-8" />
   <title>Kürtçe Fiil Çekimi</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- PapaParse CSV parser -->
   <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
   <style>
     body {
       min-height: 100vh;
     }
+
+    #suggestions li:hover {
+      background-color: rgba(0, 0, 0, 0.05);
+      cursor: pointer;
+    }
   </style>
 </head>
 
 <body class="min-h-screen bg-blue-50 text-gray-800 flex flex-col items-center justify-start p-6 gap-6">
-
   <h1 class="text-3xl font-bold text-blue-800">Kürtçe Fiil Çekimi</h1>
 
-  <input type="text" id="verb-search" placeholder="Fiil ara (Kürtçe ya da Türkçe)..."
-    class="rounded-md border border-blue-300 p-2 text-gray-700 max-w-xs" />
+  <div class="relative w-full max-w-xs">
+    <input type="text" id="verb-search" placeholder="Fiil ara (Kürtçe ya da Türkçe)..."
+      class="rounded-md border border-blue-300 p-2 text-gray-700 w-full" autocomplete="off" />
+    <ul id="suggestions"
+      class="absolute left-0 right-0 mt-1 bg-white border border-gray-300 rounded-md z-10 hidden max-h-48 overflow-auto shadow">
+    </ul>
+  </div>
 
   <label for="verb-select" class="font-semibold text-blue-700">Fiil seçin:</label>
-  <select id="verb-select" class="rounded-md border border-blue-300 p-2 text-gray-700 max-w-xs">
-    <!-- options will be populated dynamically -->
-  </select>
+  <select id="verb-select" class="rounded-md border border-blue-300 p-2 text-gray-700 max-w-xs"></select>
 
-  <div id="conjugation-container" class="max-w-4xl w-full bg-white rounded-2xl shadow-xl p-6 space-y-6">
-    <!-- conjugation table will appear here -->
-  </div>
+  <div id="conjugation-container" class="max-w-4xl w-full bg-white rounded-2xl shadow-xl p-6 space-y-6"></div>
 
   <script>
     const persons = ["ez", "tu", "ew", "em", "hûn", "ew (pl.)"];
     const verbSelect = document.getElementById("verb-select");
     const searchInput = document.getElementById("verb-search");
+    const suggestions = document.getElementById("suggestions");
     const conjugationContainer = document.getElementById("conjugation-container");
 
     let verbs = {};
     let currentPalette = null;
 
     const colorPalettes = [
-      {
-        name: 'blue',
-        bodyBg: 'bg-blue-50',
-        headingText: 'text-blue-800',
-        tableHeadBg: 'bg-blue-100',
-        tableHeadText: 'text-blue-800',
-        border: 'border-blue-300',
-        containerBg: 'bg-white',
-        inputBorder: 'border-blue-300',
-        labelText: 'text-blue-700',
-      },
-      {
-        name: 'green',
-        bodyBg: 'bg-green-50',
-        headingText: 'text-green-800',
-        tableHeadBg: 'bg-green-100',
-        tableHeadText: 'text-green-800',
-        border: 'border-green-300',
-        containerBg: 'bg-white',
-        inputBorder: 'border-green-300',
-        labelText: 'text-green-700',
-      },
-      {
-        name: 'purple',
-        bodyBg: 'bg-purple-50',
-        headingText: 'text-purple-800',
-        tableHeadBg: 'bg-purple-100',
-        tableHeadText: 'text-purple-800',
-        border: 'border-purple-300',
-        containerBg: 'bg-white',
-        inputBorder: 'border-purple-300',
-        labelText: 'text-purple-700',
-      },
-
-      {
-        name: 'orange',
-        bodyBg: 'bg-orange-50',
-        headingText: 'text-orange-800',
-        tableHeadBg: 'bg-orange-100',
-        tableHeadText: 'text-orange-800',
-        border: 'border-orange-300',
-        containerBg: 'bg-white',
-        inputBorder: 'border-orange-300',
-        labelText: 'text-orange-700',
-      },
-
-      {
-        name: 'rose',
-        bodyBg: 'bg-rose-50',
-        headingText: 'text-rose-800',
-        tableHeadBg: 'bg-rose-100',
-        tableHeadText: 'text-rose-800',
-        border: 'border-rose-300',
-        containerBg: 'bg-white',
-        inputBorder: 'border-rose-300',
-        labelText: 'text-rose-700',
-      },
-
-      {
-        name: 'yellow',
-        bodyBg: 'bg-yellow-50',
-        headingText: 'text-yellow-800',
-        tableHeadBg: 'bg-yellow-100',
-        tableHeadText: 'text-yellow-800',
-        border: 'border-yellow-300',
-        containerBg: 'bg-white',
-        inputBorder: 'border-yellow-300',
-        labelText: 'text-yellow-700',
-      },
-
-      {
-        name: 'teal',
-        bodyBg: 'bg-teal-50',
-        headingText: 'text-teal-800',
-        tableHeadBg: 'bg-teal-100',
-        tableHeadText: 'text-teal-800',
-        border: 'border-teal-300',
-        containerBg: 'bg-white',
-        inputBorder: 'border-teal-300',
-        labelText: 'text-teal-700',
-      },
-
-      {
-        name: 'indigo',
-        bodyBg: 'bg-indigo-50',
-        headingText: 'text-indigo-800',
-        tableHeadBg: 'bg-indigo-100',
-        tableHeadText: 'text-indigo-800',
-        border: 'border-indigo-300',
-        containerBg: 'bg-white',
-        inputBorder: 'border-indigo-300',
-        labelText: 'text-indigo-700',
-      },
-
-      {
-        name: 'fuchsia',
-        bodyBg: 'bg-fuchsia-50',
-        headingText: 'text-fuchsia-800',
-        tableHeadBg: 'bg-fuchsia-100',
-        tableHeadText: 'text-fuchsia-800',
-        border: 'border-fuchsia-300',
-        containerBg: 'bg-white',
-        inputBorder: 'border-fuchsia-300',
-        labelText: 'text-fuchsia-700',
-      }
-
+      { name: 'blue', bodyBg: 'bg-blue-50', headingText: 'text-blue-800', tableHeadBg: 'bg-blue-100', tableHeadText: 'text-blue-800', border: 'border-blue-300', containerBg: 'bg-white', inputBorder: 'border-blue-300', labelText: 'text-blue-700' },
+      { name: 'green', bodyBg: 'bg-green-50', headingText: 'text-green-800', tableHeadBg: 'bg-green-100', tableHeadText: 'text-green-800', border: 'border-green-300', containerBg: 'bg-white', inputBorder: 'border-green-300', labelText: 'text-green-700' },
+      { name: 'purple', bodyBg: 'bg-purple-50', headingText: 'text-purple-800', tableHeadBg: 'bg-purple-100', tableHeadText: 'text-purple-800', border: 'border-purple-300', containerBg: 'bg-white', inputBorder: 'border-purple-300', labelText: 'text-purple-700' },
+      { name: 'orange', bodyBg: 'bg-orange-50', headingText: 'text-orange-800', tableHeadBg: 'bg-orange-100', tableHeadText: 'text-orange-800', border: 'border-orange-300', containerBg: 'bg-white', inputBorder: 'border-orange-300', labelText: 'text-orange-700' },
+      { name: 'rose', bodyBg: 'bg-rose-50', headingText: 'text-rose-800', tableHeadBg: 'bg-rose-100', tableHeadText: 'text-rose-800', border: 'border-rose-300', containerBg: 'bg-white', inputBorder: 'border-rose-300', labelText: 'text-rose-700' },
+      { name: 'yellow', bodyBg: 'bg-yellow-50', headingText: 'text-yellow-800', tableHeadBg: 'bg-yellow-100', tableHeadText: 'text-yellow-800', border: 'border-yellow-300', containerBg: 'bg-white', inputBorder: 'border-yellow-300', labelText: 'text-yellow-700' },
+      { name: 'teal', bodyBg: 'bg-teal-50', headingText: 'text-teal-800', tableHeadBg: 'bg-teal-100', tableHeadText: 'text-teal-800', border: 'border-teal-300', containerBg: 'bg-white', inputBorder: 'border-teal-300', labelText: 'text-teal-700' },
+      { name: 'indigo', bodyBg: 'bg-indigo-50', headingText: 'text-indigo-800', tableHeadBg: 'bg-indigo-100', tableHeadText: 'text-indigo-800', border: 'border-indigo-300', containerBg: 'bg-white', inputBorder: 'border-indigo-300', labelText: 'text-indigo-700' },
+      { name: 'fuchsia', bodyBg: 'bg-fuchsia-50', headingText: 'text-fuchsia-800', tableHeadBg: 'bg-fuchsia-100', tableHeadText: 'text-fuchsia-800', border: 'border-fuchsia-300', containerBg: 'bg-white', inputBorder: 'border-fuchsia-300', labelText: 'text-fuchsia-700' }
     ];
 
     function normalizeForSearch(str) {
-      return str
-        .toLowerCase()
+      return str.toLowerCase()
         .replace(/[\u0131îíìï]/g, 'i')
-        .replace(/ş/g, 's')
-        .replace(/ç/g, 'c')
-        .replace(/ğ/g, 'g')
-        .replace(/ü/g, 'u')
-        .replace(/ö/g, 'o')
-        .replace(/ê/g, 'e')
-        .replace(/û/g, 'u')
-        .replace(/á/g, 'a')
-        .replace(/é/g, 'e')
-        .replace(/â/g, 'a');
+        .replace(/ş/g, 's').replace(/ç/g, 'c')
+        .replace(/ğ/g, 'g').replace(/ü/g, 'u')
+        .replace(/ö/g, 'o').replace(/ê/g, 'e')
+        .replace(/û/g, 'u').replace(/á/g, 'a')
+        .replace(/é/g, 'e').replace(/â/g, 'a');
     }
 
     function applyPalette(palette) {
       if (!palette) return;
-
       document.body.classList.remove(...colorPalettes.map(p => p.bodyBg));
       document.body.classList.add(palette.bodyBg);
-
-      const heading = document.querySelector('h1.text-3xl');
-      heading.classList.remove(...colorPalettes.map(p => p.headingText));
-      heading.classList.add(palette.headingText);
-
-      searchInput.classList.remove(...colorPalettes.map(p => p.inputBorder));
-      searchInput.classList.add(palette.inputBorder);
-
-      const label = document.querySelector('label[for="verb-select"]');
-      label.classList.remove(...colorPalettes.map(p => p.labelText));
-      label.classList.add(palette.labelText);
-
-      verbSelect.classList.remove(...colorPalettes.map(p => p.inputBorder));
-      verbSelect.classList.add(palette.inputBorder);
-
-      conjugationContainer.classList.remove(...colorPalettes.map(p => p.containerBg));
-      conjugationContainer.classList.add(palette.containerBg);
-
+      document.querySelector('h1.text-3xl').className = `text-3xl font-bold ${palette.headingText}`;
+      searchInput.className = `rounded-md border ${palette.inputBorder} p-2 text-gray-700 w-full`;
+      document.querySelector('label[for="verb-select"]').className = `font-semibold ${palette.labelText}`;
+      verbSelect.className = `rounded-md border ${palette.inputBorder} p-2 text-gray-700 max-w-xs`;
+      conjugationContainer.className = `max-w-4xl w-full ${palette.containerBg} rounded-2xl shadow-xl p-6 space-y-6`;
       currentPalette = palette;
     }
 
     fetch('Kurdish_Verbs.csv')
-      .then(response => response.text())
-      .then(csvText => {
-        const parsed = Papa.parse(csvText, { header: true, skipEmptyLines: true });
-        buildVerbsObject(parsed.data);
+      .then(res => res.text())
+      .then(csv => {
+        const parsed = Papa.parse(csv, { header: true, skipEmptyLines: true });
+        parsed.data.forEach(row => {
+          verbs[row.verb] = {
+            definition: row.definition,
+            root: row.root,
+            conjugations: {
+              present: [row.present_1, row.present_2, row.present_3, row.present_4, row.present_5, row.present_6],
+              presentNegative: [row.presentNegative_1, row.presentNegative_2, row.presentNegative_3, row.presentNegative_4, row.presentNegative_5, row.presentNegative_6],
+              past: [row.past_1, row.past_2, row.past_3, row.past_4, row.past_5, row.past_6],
+              future: [row.future_1, row.future_2, row.future_3, row.future_4, row.future_5, row.future_6]
+            }
+          };
+        });
         populateDropdown();
         const randomPalette = colorPalettes[Math.floor(Math.random() * colorPalettes.length)];
         applyPalette(randomPalette);
         renderTable(verbSelect.value, randomPalette);
-      })
-      .catch(err => {
-        conjugationContainer.innerHTML = "<p class='text-red-600'>CSV dosyası yüklenirken hata oluştu.</p>";
-        console.error("Error loading CSV:", err);
       });
-
-    function buildVerbsObject(data) {
-      data.forEach(row => {
-        verbs[row.verb] = {
-          definition: row.definition,
-          root: row.root,
-          conjugations: {
-            present: [
-              row.present_1, row.present_2, row.present_3,
-              row.present_4, row.present_5, row.present_6
-            ],
-            presentNegative: [
-              row.presentNegative_1, row.presentNegative_2, row.presentNegative_3,
-              row.presentNegative_4, row.presentNegative_5, row.presentNegative_6
-            ],
-            past: [
-              row.past_1, row.past_2, row.past_3,
-              row.past_4, row.past_5, row.past_6
-            ],
-            future: [
-              row.future_1, row.future_2, row.future_3,
-              row.future_4, row.future_5, row.future_6
-            ]
-          }
-        };
-      });
-    }
 
     function populateDropdown(filter = "") {
       const query = normalizeForSearch(filter);
       verbSelect.innerHTML = "";
-
       const matches = Object.entries(verbs).filter(([verb, data]) => {
-        const normVerb = normalizeForSearch(verb);
-        const normDef = normalizeForSearch(data.definition);
-
-        if (normVerb.includes(query) || normDef.includes(query)) return true;
-
-        return Object.values(data.conjugations).some(tenseArray =>
-          tenseArray.some(form => form && normalizeForSearch(form).includes(query))
-        );
+        const nv = normalizeForSearch(verb), nd = normalizeForSearch(data.definition);
+        return nv.includes(query) || nd.includes(query);
       });
-
-      if (matches.length === 0) {
-        const option = document.createElement("option");
-        option.textContent = "Eşleşen fiil bulunamadı.";
-        option.disabled = true;
-        verbSelect.appendChild(option);
-        conjugationContainer.innerHTML = "";
-        return;
-      }
-
       matches.forEach(([verb, data], index) => {
-        const option = document.createElement("option");
-        option.value = verb;
-        option.textContent = `${verb} (${data.definition})`;
-        verbSelect.appendChild(option);
+        const opt = document.createElement("option");
+        opt.value = verb;
+        opt.textContent = `${verb} (${data.definition})`;
+        verbSelect.appendChild(opt);
         if (index === 0) renderTable(verb, currentPalette);
       });
     }
 
     function renderTable(verb, palette) {
-      if (!verb || !verbs[verb]) {
-        conjugationContainer.innerHTML = "<p>Fiil seçiniz.</p>";
-        return;
-      }
-      const v = verbs[verb].conjugations;
-      const p = palette || currentPalette || colorPalettes[0];
-
+      if (!verb || !verbs[verb]) return;
+      const v = verbs[verb].conjugations, p = palette || currentPalette;
       conjugationContainer.innerHTML = `
         <h2 class="text-xl font-semibold ${p.headingText}">
-          Fiil: <span class="italic">${verb}</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          Anlam: <span class="italic">${verbs[verb].definition}</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          Kök: <span class="italic">${verbs[verb].root}</span>
+          Fiil: <span class="italic">${verb}</span>
+          &nbsp;&nbsp; Anlam: <span class="italic">${verbs[verb].definition}</span>
+          &nbsp;&nbsp; Kök: <span class="italic">${verbs[verb].root}</span>
         </h2>
         <div class="overflow-x-auto">
           <table class="min-w-full border ${p.border} rounded-md text-sm">
@@ -298,26 +144,42 @@
                   <td class="p-2">${v.presentNegative[i]}</td>
                   <td class="p-2">${v.past[i]}</td>
                   <td class="p-2">${v.future[i]}</td>
-                </tr>
-              `).join('')}
+                </tr>`).join('')}
             </tbody>
           </table>
-        </div>
-      `;
+        </div>`;
     }
 
     verbSelect.addEventListener("change", e => {
-      const randomPalette = colorPalettes[Math.floor(Math.random() * colorPalettes.length)];
-      applyPalette(randomPalette);
-      renderTable(e.target.value, randomPalette);
+      const rand = colorPalettes[Math.floor(Math.random() * colorPalettes.length)];
+      applyPalette(rand);
+      renderTable(e.target.value, rand);
     });
 
     searchInput.addEventListener("input", e => {
-      const randomPalette = colorPalettes[Math.floor(Math.random() * colorPalettes.length)];
-      applyPalette(randomPalette);
-      populateDropdown(e.target.value);
+      const input = e.target.value.trim();
+      if (!input) return suggestions.classList.add("hidden");
+      const query = normalizeForSearch(input);
+      const matches = Object.entries(verbs).filter(([v, d]) => normalizeForSearch(v).includes(query) || normalizeForSearch(d.definition).includes(query));
+      suggestions.innerHTML = matches.map(([v, d]) => `<li class="p-2 border-b last:border-none">${v} (${d.definition})</li>`).join('');
+      suggestions.classList.remove("hidden");
+      suggestions.querySelectorAll("li").forEach(li => {
+        li.addEventListener("click", () => {
+          searchInput.value = v = li.textContent.split(" (")[0];
+          suggestions.classList.add("hidden");
+          const rand = colorPalettes[Math.floor(Math.random() * colorPalettes.length)];
+          applyPalette(rand);
+          verbSelect.value = v;
+          renderTable(v, rand);
+        });
+      });
     });
 
+    document.addEventListener("click", e => {
+      if (!suggestions.contains(e.target) && e.target !== searchInput) {
+        suggestions.classList.add("hidden");
+      }
+    });
   </script>
 </body>
 
