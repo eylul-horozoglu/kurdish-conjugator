@@ -1,6 +1,6 @@
 # kurdish-conjugator
 Kurdish Conjugator
 
-Kürtçe Fiil Çekimleri
+Kürtçe Fiil Çekimlemeleri
 
 https://eylul-horozoglu.github.io/kurdish-conjugator/
