@@ -1,3 +1,4 @@
 # kurdish-conjugator
 Kurdish Conjugator
-🚀 [Try the live Kurdish Verb Conjugator here!](https://eylul-horozoglu.github.io/kurdish-conjugator/)
+Kürtçe Fiil Çekimleri
+https://eylul-horozoglu.github.io/kurdish-conjugator/
