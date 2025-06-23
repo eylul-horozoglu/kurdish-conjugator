@@ -126,37 +126,45 @@
 
     function renderTable(verb, palette) {
       if (!verb || !verbs[verb]) return;
-      const v = verbs[verb].conjugations, p = palette || currentPalette;
-      conjugationContainer.innerHTML = `
-        <h2 class="text-xl font-semibold ${p.headingText}">
-          Fiil: <span class="italic">${verb}</span>
-          &nbsp;&nbsp; Anlam: <span class="italic">${verbs[verb].definition}</span>
-          &nbsp;&nbsp; Kök: <span class="italic">${verbs[verb].root}</span>
-        </h2>
-        <div class="overflow-x-auto">
-          <table class="min-w-full border ${p.border} rounded-md text-sm">
-            <thead class="${p.tableHeadBg} ${p.tableHeadText}">
+      const v = verbs[verb].conjugations;
+      const p = palette || currentPalette;
+
+      function createTenseTable(title, posForms, negForms) {
+        return `
+      <div class="space-y-2">
+        <h3 class="text-lg font-semibold ${p.headingText}">${title}</h3>
+        <table class="min-w-full border ${p.border} rounded-md text-sm">
+          <thead class="${p.tableHeadBg} ${p.tableHeadText}">
+            <tr>
+              <th class="p-2 border ${p.border} text-left">Kişi</th>
+              <th class="p-2 border ${p.border} text-left">Olumlu</th>
+              <th class="p-2 border ${p.border} text-left">Olumsuz</th>
+            </tr>
+          </thead>
+          <tbody class="text-gray-700">
+            ${persons.map((person, i) => `
               <tr>
-                <th class="p-2 border ${p.border} text-left">Kişi</th>
-                <th class="p-2 border ${p.border} text-left">Şimdiki Zaman</th>
-                <th class="p-2 border ${p.border} text-left">Olumsuz</th>
-                <th class="p-2 border ${p.border} text-left">Geçmiş Zaman</th>
-                <th class="p-2 border ${p.border} text-left">Gelecek Zaman</th>
-              </tr>
-            </thead>
-            <tbody class="text-gray-700">
-              ${persons.map((person, i) => `
-                <tr>
-                  <td class="p-2 border ${p.border}">${person}</td>
-                  <td class="p-2">${v.present[i]}</td>
-                  <td class="p-2">${v.presentNegative[i]}</td>
-                  <td class="p-2">${v.past[i]}</td>
-                  <td class="p-2">${v.future[i]}</td>
-                </tr>`).join('')}
-            </tbody>
-          </table>
-        </div>`;
+                <td class="p-2 border ${p.border}">${person}</td>
+                <td class="p-2 border ${p.border}">${posForms[i]}</td>
+                <td class="p-2 border ${p.border}">${negForms[i]}</td>
+              </tr>`).join('')}
+          </tbody>
+        </table>
+      </div>`;
+      }
+
+      conjugationContainer.innerHTML = `
+    <h2 class="text-xl font-semibold ${p.headingText}">
+      Fiil: <span class="italic">${verb}</span>
+      &nbsp;&nbsp; Anlam: <span class="italic">${verbs[verb].definition}</span>
+      &nbsp;&nbsp; Kök: <span class="italic">${verbs[verb].root}</span>
+    </h2>
+    ${createTenseTable("Şimdiki Zaman", v.present, v.presentNegative)}
+    ${createTenseTable("Geçmiş Zaman", v.past, v.pastNegative)}
+    ${createTenseTable("Gelecek Zaman", v.future, v.futureNegative)}
+  `;
     }
+
 
     verbSelect.addEventListener("change", e => {
       const rand = colorPalettes[Math.floor(Math.random() * colorPalettes.length)];
