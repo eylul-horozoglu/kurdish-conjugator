@@ -1,5 +1,5 @@
 verb,definition,root,present_1,present_2,present_3,present_4,present_5,present_6,presentNegative_1,presentNegative_2,presentNegative_3,presentNegative_4,presentNegative_5,presentNegative_6,past_1,past_2,past_3,past_4,past_5,past_6,pastNegative_1,pastNegative_2,pastNegative_3,pastNegative_4,pastNegative_5,pastNegative_6,future_1,future_2,future_3,future_4,future_5,future_6,futureNegative_1,futureNegative_2,futureNegative_3,futureNegative_4,futureNegative_5,futureNegative_6
-ajotin,sürmek,deneme,1,2,3,4,5,6,11,22,33,44,55,66,111,222,333,444,555,666,1111,2222,3333,4444,5555,6666,11111,22222,33333,44444,55555,66666,111111,222222,333333,444444,555555,666666
+ajotin,sürmek,deneme,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
 alîkarî kirin,yardım etmek,alîkarî ...k-,alîkarî dikim,alîkarî dikî,alîkarî dike,alîkarî dikin,alîkarî dikin,alîkarî dikin,alîkarî nakim,alîkarî nakî,alîkarî nake,alîkarî nakin,alîkarî nakin,alîkarî nakin,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
 amade kirin,hazırlamak,amade ...k-,amade dikim,amade dikî,amade dike,amade dikin,amade dikin,amade dikin,amade nakim,amade nakî,amade nake,amade nakin,amade nakin,amade nakin,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
 anîn,getirmek,-,tînim,tînî,tîne,tînin,tînin,tînin,naynim,naynî,nayne,naynin,naynin,naynin,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
@@ -21,6 +21,7 @@ bêhna xwe dan,dinlenmek,-,bêhna xwe didim,bêhna xwe didî,bêhna xwe dide,bê
 behs kirin,tartışmak,behs ...k-,behs dikim,behs dikî,behs dike,behs dikin,behs dikin,behs dikin,behs nakim,behs nakî,behs nake,behs nakin,behs nakin,behs nakin,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
 belav kirin,dağıtmak,-,belav dikim,belav dikî,belav dike,belav dikin,belav dikin,belav dikin,belav nakim,belav nakî,belav nake,belav nakin,belav nakin,belav nakin,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
 berdewam kirin,devam etmek,-,berdewam dikim,berdewam dikî,berdewam dike,berdewam dikin,berdewam dikin,berdewam dikin,berdewam nakim,berdewam nakî,berdewam nake,berdewam nakin,berdewam nakin,berdewam nakin,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
+berhev kirin,"derlemek, biriktirmek",berhev ...k-,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 bêrî kirin,özlemek,-,bêrî dikim,bêrî dikî,bêrî dike,bêrî dikin,bêrî dikin,bêrî dikin,bêrî nakim,bêrî nakî,bêrî nake,bêrî nakin,bêrî nakin,bêrî nakin,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
 bersiv dan,cevap vermek,-,bersiv didim,bersiv didî,bersiv dide,bersiv didin,bersiv didin,bersiv didin,bersiv nadim,bersiv nadî,bersiv nade,bersiv nadin,bersiv nadin,bersiv nadin,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
 bexşandin,affetmek,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
@@ -58,6 +59,7 @@ dest pê kirin,başlamak,-,dest pê dikim,dest pê dikî,dest pê dike,dest pê 
 destûr dan,izin vermek,-,destûr didim,destûr didî,destûr dide,destûr didin,destûr didin,destûr didin,destûr nadim,destûr nadî,destûr nade,destûr nadin,destûr nadin,destûr nadin,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
 dikişînin,çekmek,kişîn-,dikişînim,dikişînî,dikişîne,dikişînin,dikişînin,dikişînin,nakşînim,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
 dildarî bûn,âşık olmak,-,dildarî dibim,dildarî dibî,dildarî dibe,dildarî dibin,dildarî dibin,dildarî dibin,dildarî nabim,dildarî nabî,dildarî nabe,dildarî nabin,dildarî nabin,dildarî nabin,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
+dişînim,göndermek,şîn,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 dîtin,görmek,b-,dîbinim,dîbinî,dîbine,dîbinin,dîbinin,dîbinin,nabinim,nabinî,nabine,nabinin,nabinin,nabinin,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
 dubare kirin,tekrarlamak,-,dubare dikim,dubare dikî,dubare dike,dubare dikin,dubare dikin,dubare dikin,dubare nakim,dubare nakî,dubare nake,dubare nakin,dubare nakin,dubare nakin,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
 erê kirin,onaylamak,-,erê dikim,erê dikî,erê dike,erê dikin,erê dikin,erê dikin,erê nakim,erê nakî,erê nake,erê nakin,erê nakin,erê nakin,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
@@ -94,6 +96,7 @@ hez kirin,sevmek,-,hez dikim,hez dikî,hez dike,hez dikin,hez dikin,hez dikin,he
 hilberîn,üretmek,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
 hilbijartin,seçmek,-,hildibijêrim,hildibijêrî,hildibijêre,hildibijêrin,hildibijêrin,hildibijêrin,hilnabijêrim,hilnabijêrî,hilnabijêre,hilnabijêrin,hilnabijêrin,hilnabijêrin,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
 hildan,"içermek, kaldırmak",-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
+hilkişîn,tırmanmak,hil...kiş-,hildikişim,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 hilperikîn,tırmanmak,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
 hîn bûn,öğrenmek,-,hîn dibim,hîn dibî,hîn dibe,hîn dibin,hîn dibin,hîn dibin,hîn nabim,hîn nabî,hîn nabe,hîn nabin,hîn nabin,hîn nabin,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
 hîn kirin,öğretmek,-,hîn dikim,hîn dikî,hîn dike,hîn dikin,hîn dikin,hîn dikin,hîn nakim,hîn nakî,hîn nake,hîn nakin,hîn nakin,hîn nakin,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
