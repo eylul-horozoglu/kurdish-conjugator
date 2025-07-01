@@ -92,7 +92,14 @@
               past: [row.past_1, row.past_2, row.past_3, row.past_4, row.past_5, row.past_6],
               pastNegative: [row.pastNegative_1, row.pastNegative_2, row.pastNegative_3, row.pastNegative_4, row.pastNegative_5, row.pastNegative_6],
               future: [row.future_1, row.future_2, row.future_3, row.future_4, row.future_5, row.future_6],
-              futureNegative: [row.futureNegative_1, row.futureNegative_2, row.futureNegative_3, row.futureNegative_4, row.futureNegative_5, row.futureNegative_6]
+              futureNegative: [row.futureNegative_1, row.futureNegative_2, row.futureNegative_3, row.futureNegative_4, row.futureNegative_5, row.futureNegative_6],
+              imperative: {
+                pos: [row.imperative_2, row.imperative_5],
+                neg1: [row.imperativeNegative_2_1, row.imperativeNegative_5_1],
+                neg2: [row.imperativeNegative_2_2, row.imperativeNegative_5_2]
+              },
+              want: [row.want_1, row.want_2, row.want_3, row.want_4, row.want_5, row.want_6],
+              wantNegative: [row.wantNegative_1, row.wantNegative_2, row.wantNegative_3, row.wantNegative_4, row.wantNegative_5, row.wantNegative_6]
             }
           };
         });
@@ -101,6 +108,7 @@
         applyPalette(randomPalette);
         renderTable(verbSelect.value, randomPalette);
       });
+
 
     function populateDropdown(filter = "") {
       const query = normalizeForSearch(filter);
@@ -154,60 +162,93 @@
         </table>
       </div>`;
       }
+      function createImperativeTable(title, forms, negForms) {
+        return `
+    <div class="space-y-2">
+      <h3 class="text-lg font-semibold ${p.headingText}">${title}</h3>
+      <table class="min-w-full border ${p.border} rounded-md text-sm">
+        <thead class="${p.tableHeadBg} ${p.tableHeadText}">
+          <tr>
+            <th class="p-2 border ${p.border} text-left">Kişi</th>
+            <th class="p-2 border ${p.border} text-left">Olumlu</th>
+            <th class="p-2 border ${p.border} text-left">Olumsuz 1</th>
+            <th class="p-2 border ${p.border} text-left">Olumsuz 2</th>
+          </tr>
+        </thead>
+        <tbody class="text-gray-700">
+          <tr>
+            <td class="p-2 border ${p.border}">tu</td>
+            <td class="p-2 border ${p.border}">${forms[0]}</td>
+            <td class="p-2 border ${p.border}">${negForms[0]}</td>
+            <td class="p-2 border ${p.border}">–</td>
+          </tr>
+          <tr>
+            <td class="p-2 border ${p.border}">hûn</td>
+            <td class="p-2 border ${p.border}">${forms[1]}</td>
+            <td class="p-2 border ${p.border}">${negForms[1]}</td>
+            <td class="p-2 border ${p.border}">${negForms[2]}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  `;
+      }
 
       conjugationContainer.innerHTML = `
-    <h2 class="text-xl font-semibold ${p.headingText}">
-      Fiil: <span class="italic">${verb}</span>
-      &nbsp;&nbsp; Anlam: <span class="italic">${verbs[verb].definition}</span>
-      &nbsp;&nbsp; Kök: <span class="italic">${verbs[verb].root}</span>
-    </h2>
-    ${createTenseTable("Şimdiki Zaman", v.present, v.presentNegative)}
-    ${createTenseTable("Geçmiş Zaman", v.past, v.pastNegative)}
-    ${createTenseTable("Gelecek Zaman", v.future, v.futureNegative)}
-  `;
-    }
+  <h2 class="text-xl font-semibold ${p.headingText}">
+    Fiil: <span class="italic">${verb}</span>
+    &nbsp;&nbsp; Anlam: <span class="italic">${verbs[verb].definition}</span>
+    &nbsp;&nbsp; Kök: <span class="italic">${verbs[verb].root}</span>
+  </h2>
+  ${createTenseTable("Şimdiki Zaman", v.present, v.presentNegative)}
+  ${createTenseTable("Geçmiş Zaman", v.past, v.pastNegative)}
+  ${createTenseTable("Gelecek Zaman", v.future, v.futureNegative)}
+${createImperativeTable("Emir Kipi", v.imperative.pos, [v.imperative.neg1[0], v.imperative.neg1[1]], [v.imperative.neg2[0], v.imperative.neg2[1]])}
+  ${createTenseTable("İstemek + Fiil (dixwazim biçim)", v.want, v.wantNegative)}
+`;
 
 
-    verbSelect.addEventListener("change", e => {
-      const rand = colorPalettes[Math.floor(Math.random() * colorPalettes.length)];
-      applyPalette(rand);
-      renderTable(e.target.value, rand);
-    });
 
-    searchInput.addEventListener("input", e => {
-      const input = e.target.value.trim();
-      if (!input) return suggestions.classList.add("hidden");
-      const query = normalizeForSearch(input);
-      const matches = Object.entries(verbs).filter(([v, d]) => {
-        const verbNorm = normalizeForSearch(v);
-        const defNorm = normalizeForSearch(d.definition);
-        const forms = Object.values(d.conjugations).flat(); // all forms
-
-        return (
-          verbNorm.includes(query) ||
-          defNorm.includes(query) ||
-          forms.some(form => normalizeForSearch(form || '').includes(query))
-        );
+      verbSelect.addEventListener("change", e => {
+        const rand = colorPalettes[Math.floor(Math.random() * colorPalettes.length)];
+        applyPalette(rand);
+        renderTable(e.target.value, rand);
       });
-      suggestions.innerHTML = matches.map(([v, d]) => `<li class="p-2 border-b last:border-none">${v} (${d.definition})</li>`).join('');
-      suggestions.classList.remove("hidden");
-      suggestions.querySelectorAll("li").forEach(li => {
-        li.addEventListener("click", () => {
-          searchInput.value = v = li.textContent.split(" (")[0];
-          suggestions.classList.add("hidden");
-          const rand = colorPalettes[Math.floor(Math.random() * colorPalettes.length)];
-          applyPalette(rand);
-          verbSelect.value = v;
-          renderTable(v, rand);
+
+      searchInput.addEventListener("input", e => {
+        const input = e.target.value.trim();
+        if (!input) return suggestions.classList.add("hidden");
+        const query = normalizeForSearch(input);
+        const matches = Object.entries(verbs).filter(([v, d]) => {
+          const verbNorm = normalizeForSearch(v);
+          const defNorm = normalizeForSearch(d.definition);
+          const forms = Object.values(d.conjugations).flat(); // all forms
+
+          return (
+            verbNorm.includes(query) ||
+            defNorm.includes(query) ||
+            forms.some(form => normalizeForSearch(form || '').includes(query))
+          );
+        });
+        suggestions.innerHTML = matches.map(([v, d]) => `<li class="p-2 border-b last:border-none">${v} (${d.definition})</li>`).join('');
+        suggestions.classList.remove("hidden");
+        suggestions.querySelectorAll("li").forEach(li => {
+          li.addEventListener("click", () => {
+            searchInput.value = v = li.textContent.split(" (")[0];
+            suggestions.classList.add("hidden");
+            const rand = colorPalettes[Math.floor(Math.random() * colorPalettes.length)];
+            applyPalette(rand);
+            verbSelect.value = v;
+            renderTable(v, rand);
+          });
         });
       });
-    });
 
-    document.addEventListener("click", e => {
-      if (!suggestions.contains(e.target) && e.target !== searchInput) {
-        suggestions.classList.add("hidden");
-      }
-    });
+      document.addEventListener("click", e => {
+        if (!suggestions.contains(e.target) && e.target !== searchInput) {
+          suggestions.classList.add("hidden");
+        }
+      });
   </script>
 </body>
 
