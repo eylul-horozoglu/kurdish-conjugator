@@ -150,19 +150,19 @@
         </thead>
         <tbody class="text-gray-700">
           ${persons.map((person, i) => {
-          const pos = title === "İstemek Kipi" ? `${dixwaz[i]} ${posForms[i]}` : posForms[i];
-          const neg = title === "İstemek Kipi" ? `${dixwaz[i].replace("dixwaz", "naxwaz")} ${negForms[i]}` : negForms[i];
+          const label = title === "İstemek Kipi" ? dixwaz[i] : person;
           return `
               <tr>
-                <td class="p-2 border ${p.border}">${person}</td>
-                <td class="p-2 border ${p.border}">${pos}</td>
-                <td class="p-2 border ${p.border}">${neg}</td>
+                <td class="p-2 border ${p.border}">${label}</td>
+                <td class="p-2 border ${p.border}">${posForms[i]}</td>
+                <td class="p-2 border ${p.border}">${negForms[i]}</td>
               </tr>`;
         }).join('')}
         </tbody>
       </table>
     </div>`;
       }
+
 
 
       conjugationContainer.innerHTML = `
