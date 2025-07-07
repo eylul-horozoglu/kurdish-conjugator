@@ -92,7 +92,10 @@
               past: [row.past_1, row.past_2, row.past_3, row.past_4, row.past_5, row.past_6],
               pastNegative: [row.pastNegative_1, row.pastNegative_2, row.pastNegative_3, row.pastNegative_4, row.pastNegative_5, row.pastNegative_6],
               future: [row.future_1, row.future_2, row.future_3, row.future_4, row.future_5, row.future_6],
-              futureNegative: [row.futureNegative_1, row.futureNegative_2, row.futureNegative_3, row.futureNegative_4, row.futureNegative_5, row.futureNegative_6]
+              futureNegative: [row.futureNegative_1, row.futureNegative_2, row.futureNegative_3, row.futureNegative_4, row.futureNegative_5, row.futureNegative_6],
+              want: [row.want_1, row.want_2, row.want_3, row.want_4, row.want_5, row.want_6],
+              wantNegative: [row.wantNegative_1, row.wantNegative_2, row.wantNegative_3, row.wantNegative_4, row.wantNegative_5, row.wantNegative_6]
+
             }
           };
         });
@@ -156,15 +159,17 @@
       }
 
       conjugationContainer.innerHTML = `
-    <h2 class="text-xl font-semibold ${p.headingText}">
-      Fiil: <span class="italic">${verb}</span>
-      &nbsp;&nbsp; Anlam: <span class="italic">${verbs[verb].definition}</span>
-      &nbsp;&nbsp; Kök: <span class="italic">${verbs[verb].root}</span>
-    </h2>
-    ${createTenseTable("Şimdiki Zaman", v.present, v.presentNegative)}
-    ${createTenseTable("Geçmiş Zaman", v.past, v.pastNegative)}
-    ${createTenseTable("Gelecek Zaman", v.future, v.futureNegative)}
-  `;
+  <h2 class="text-xl font-semibold ${p.headingText}">
+    Fiil: <span class="italic">${verb}</span>
+    &nbsp;&nbsp; Anlam: <span class="italic">${verbs[verb].definition}</span>
+    &nbsp;&nbsp; Kök: <span class="italic">${verbs[verb].root}</span>
+  </h2>
+  ${createTenseTable("Şimdiki Zaman", v.present, v.presentNegative)}
+  ${createTenseTable("Geçmiş Zaman", v.past, v.pastNegative)}
+  ${createTenseTable("Gelecek Zaman", v.future, v.futureNegative)}
+  ${createTenseTable("İstemek Kipi", v.want, v.wantNegative)}
+`;
+
     }
 
 
