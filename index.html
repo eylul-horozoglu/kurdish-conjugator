@@ -135,28 +135,35 @@
       const p = palette || currentPalette;
 
       function createTenseTable(title, posForms, negForms) {
+        const dixwaz = ["Ez dixwazim", "Tu dixwazî", "Ew dixwaze", "Em dixwazin", "Hûn dixwazin", "Ew dixwazin"];
+
         return `
-      <div class="space-y-2">
-        <h3 class="text-lg font-semibold ${p.headingText}">${title}</h3>
-        <table class="min-w-full border ${p.border} rounded-md text-sm">
-          <thead class="${p.tableHeadBg} ${p.tableHeadText}">
-            <tr>
-              <th class="p-2 border ${p.border} text-left">Kişi</th>
-              <th class="p-2 border ${p.border} text-left">Olumlu</th>
-              <th class="p-2 border ${p.border} text-left">Olumsuz</th>
-            </tr>
-          </thead>
-          <tbody class="text-gray-700">
-            ${persons.map((person, i) => `
+    <div class="space-y-2">
+      <h3 class="text-lg font-semibold ${p.headingText}">${title}</h3>
+      <table class="min-w-full border ${p.border} rounded-md text-sm">
+        <thead class="${p.tableHeadBg} ${p.tableHeadText}">
+          <tr>
+            <th class="p-2 border ${p.border} text-left">Kişi</th>
+            <th class="p-2 border ${p.border} text-left">Olumlu</th>
+            <th class="p-2 border ${p.border} text-left">Olumsuz</th>
+          </tr>
+        </thead>
+        <tbody class="text-gray-700">
+          ${persons.map((person, i) => {
+          const pos = title === "İstemek Kipi" ? `${dixwaz[i]} ${posForms[i]}` : posForms[i];
+          const neg = title === "İstemek Kipi" ? `${dixwaz[i].replace("dixwaz", "naxwaz")} ${negForms[i]}` : negForms[i];
+          return `
               <tr>
                 <td class="p-2 border ${p.border}">${person}</td>
-                <td class="p-2 border ${p.border}">${posForms[i]}</td>
-                <td class="p-2 border ${p.border}">${negForms[i]}</td>
-              </tr>`).join('')}
-          </tbody>
-        </table>
-      </div>`;
+                <td class="p-2 border ${p.border}">${pos}</td>
+                <td class="p-2 border ${p.border}">${neg}</td>
+              </tr>`;
+        }).join('')}
+        </tbody>
+      </table>
+    </div>`;
       }
+
 
       conjugationContainer.innerHTML = `
   <h2 class="text-xl font-semibold ${p.headingText}">
