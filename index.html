@@ -150,7 +150,8 @@
         </thead>
         <tbody class="text-gray-700">
           ${persons.map((person, i) => {
-          const label = title === "İstemek Kipi" ? dixwaz[i] : person;
+          const label = title === "İstemek Kipi" ? `${dixwaz[i]}/naxwaz${dixwaz[i].slice(6)}` : person;
+          const label = title === "İstemek Kipi" ? `${dixwaz[i]}/naxwaz${dixwaz[i].slice(6)}` : person;
           return `
               <tr>
                 <td class="p-2 border ${p.border}">${label}</td>
