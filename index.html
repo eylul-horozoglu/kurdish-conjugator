@@ -1,40 +1,60 @@
 <!DOCTYPE html>
 <html lang="tr">
-
 <head>
   <meta charset="UTF-8" />
-  <title>Kürtçe Fiil Çekimi</title>
+  <title>Kürtçe Dil Araçları</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
   <style>
     body {
       min-height: 100vh;
     }
-
-    #suggestions li:hover {
+    #suggestions li:hover, #dict-suggestions li:hover {
       background-color: rgba(0, 0, 0, 0.05);
       cursor: pointer;
     }
   </style>
 </head>
-
 <body class="min-h-screen bg-blue-50 text-gray-800 flex flex-col items-center justify-start p-6 gap-6">
-  <h1 class="text-3xl font-bold text-blue-800">Kürtçe Fiil Çekimi</h1>
+  <h1 class="text-3xl font-bold text-blue-800">Kürtçe Dil Araçları</h1>
 
-  <div class="relative w-full max-w-xs">
-    <input type="text" id="verb-search" placeholder="Fiil ara (Kürtçe ya da Türkçe)..."
-      class="rounded-md border border-blue-300 p-2 text-gray-700 w-full" autocomplete="off" />
-    <ul id="suggestions"
-      class="absolute left-0 right-0 mt-1 bg-white border border-gray-300 rounded-md z-10 hidden max-h-48 overflow-auto shadow">
-    </ul>
+  <!-- Tabs -->
+  <div class="flex gap-4">
+    <button id="tab-verbs" class="px-4 py-2 rounded-md bg-blue-200 font-semibold">Fiil Çekimi</button>
+    <button id="tab-dict" class="px-4 py-2 rounded-md bg-gray-200">Sözlük</button>
   </div>
 
-  <label for="verb-select" class="font-semibold text-blue-700">Fiil seçin:</label>
-  <select id="verb-select" class="rounded-md border border-blue-300 p-2 text-gray-700 max-w-xs"></select>
+  <!-- Verb Conjugator Section -->
+  <div id="verbs-section" class="w-full flex flex-col items-center gap-6">
+    <div class="relative w-full max-w-xs">
+      <input type="text" id="verb-search" placeholder="Fiil ara (Kürtçe ya da Türkçe)..."
+        class="rounded-md border border-blue-300 p-2 text-gray-700 w-full" autocomplete="off" />
+      <ul id="suggestions"
+        class="absolute left-0 right-0 mt-1 bg-white border border-gray-300 rounded-md z-10 hidden max-h-48 overflow-auto shadow">
+      </ul>
+    </div>
 
-  <div id="conjugation-container" class="max-w-4xl w-full bg-white rounded-2xl shadow-xl p-6 space-y-6"></div>
+    <label for="verb-select" class="font-semibold text-blue-700">Fiil seçin:</label>
+    <select id="verb-select" class="rounded-md border border-blue-300 p-2 text-gray-700 max-w-xs"></select>
+
+    <div id="conjugation-container" class="max-w-4xl w-full bg-white rounded-2xl shadow-xl p-6 space-y-6"></div>
+  </div>
+
+  <!-- Dictionary Section -->
+  <div id="dict-section" class="w-full hidden flex flex-col items-center gap-6">
+    <div class="relative w-full max-w-xs">
+      <input type="text" id="dict-search" placeholder="Kelime ara..."
+        class="rounded-md border border-green-300 p-2 text-gray-700 w-full" autocomplete="off" />
+      <ul id="dict-suggestions"
+        class="absolute left-0 right-0 mt-1 bg-white border border-gray-300 rounded-md z-10 hidden max-h-48 overflow-auto shadow">
+      </ul>
+    </div>
+
+    <div id="dict-container" class="max-w-4xl w-full bg-white rounded-2xl shadow-xl p-6 space-y-6"></div>
+  </div>
 
   <script>
+    /* ========= VERB CONJUGATOR ========= */
     const persons = ["ez", "tu", "ew", "em", "hûn", "ew (pl.)"];
     const verbSelect = document.getElementById("verb-select");
     const searchInput = document.getElementById("verb-search");
@@ -47,13 +67,7 @@
     const colorPalettes = [
       { name: 'blue', bodyBg: 'bg-blue-50', headingText: 'text-blue-800', tableHeadBg: 'bg-blue-100', tableHeadText: 'text-blue-800', border: 'border-blue-300', containerBg: 'bg-white', inputBorder: 'border-blue-300', labelText: 'text-blue-700' },
       { name: 'green', bodyBg: 'bg-green-50', headingText: 'text-green-800', tableHeadBg: 'bg-green-100', tableHeadText: 'text-green-800', border: 'border-green-300', containerBg: 'bg-white', inputBorder: 'border-green-300', labelText: 'text-green-700' },
-      { name: 'purple', bodyBg: 'bg-purple-50', headingText: 'text-purple-800', tableHeadBg: 'bg-purple-100', tableHeadText: 'text-purple-800', border: 'border-purple-300', containerBg: 'bg-white', inputBorder: 'border-purple-300', labelText: 'text-purple-700' },
-      { name: 'orange', bodyBg: 'bg-orange-50', headingText: 'text-orange-800', tableHeadBg: 'bg-orange-100', tableHeadText: 'text-orange-800', border: 'border-orange-300', containerBg: 'bg-white', inputBorder: 'border-orange-300', labelText: 'text-orange-700' },
-      { name: 'rose', bodyBg: 'bg-rose-50', headingText: 'text-rose-800', tableHeadBg: 'bg-rose-100', tableHeadText: 'text-rose-800', border: 'border-rose-300', containerBg: 'bg-white', inputBorder: 'border-rose-300', labelText: 'text-rose-700' },
-      { name: 'yellow', bodyBg: 'bg-yellow-50', headingText: 'text-yellow-800', tableHeadBg: 'bg-yellow-100', tableHeadText: 'text-yellow-800', border: 'border-yellow-300', containerBg: 'bg-white', inputBorder: 'border-yellow-300', labelText: 'text-yellow-700' },
-      { name: 'teal', bodyBg: 'bg-teal-50', headingText: 'text-teal-800', tableHeadBg: 'bg-teal-100', tableHeadText: 'text-teal-800', border: 'border-teal-300', containerBg: 'bg-white', inputBorder: 'border-teal-300', labelText: 'text-teal-700' },
-      { name: 'indigo', bodyBg: 'bg-indigo-50', headingText: 'text-indigo-800', tableHeadBg: 'bg-indigo-100', tableHeadText: 'text-indigo-800', border: 'border-indigo-300', containerBg: 'bg-white', inputBorder: 'border-indigo-300', labelText: 'text-indigo-700' },
-      { name: 'fuchsia', bodyBg: 'bg-fuchsia-50', headingText: 'text-fuchsia-800', tableHeadBg: 'bg-fuchsia-100', tableHeadText: 'text-fuchsia-800', border: 'border-fuchsia-300', containerBg: 'bg-white', inputBorder: 'border-fuchsia-300', labelText: 'text-fuchsia-700' }
+      { name: 'purple', bodyBg: 'bg-purple-50', headingText: 'text-purple-800', tableHeadBg: 'bg-purple-100', tableHeadText: 'text-purple-800', border: 'border-purple-300', containerBg: 'bg-white', inputBorder: 'border-purple-300', labelText: 'text-purple-700' }
     ];
 
     function normalizeForSearch(str) {
@@ -95,7 +109,6 @@
               futureNegative: [row.futureNegative_1, row.futureNegative_2, row.futureNegative_3, row.futureNegative_4, row.futureNegative_5, row.futureNegative_6],
               want: [row.want_1, row.want_2, row.want_3, row.want_4, row.want_5, row.want_6],
               wantNegative: [row.wantNegative_1, row.wantNegative_2, row.wantNegative_3, row.wantNegative_4, row.wantNegative_5, row.wantNegative_6]
-
             }
           };
         });
@@ -120,7 +133,7 @@
         verbSelect.appendChild(opt);
 
         if (index === 0) {
-          verbSelect.value = verb; // ✅ make sure the dropdown has this selected
+          verbSelect.value = verb;
           const rand = colorPalettes[Math.floor(Math.random() * colorPalettes.length)];
           applyPalette(rand);
           renderTable(verb, rand);
@@ -128,15 +141,12 @@
       });
     }
 
-
     function renderTable(verb, palette) {
       if (!verb || !verbs[verb]) return;
       const v = verbs[verb].conjugations;
       const p = palette || currentPalette;
 
       function createTenseTable(title, posForms, negForms) {
-        const dixwaz = ["Ez dixwazim", "Tu dixwazî", "Ew dixwaze", "Em dixwazin", "Hûn dixwazin", "Ew dixwazin"];
-
         return `
     <div class="space-y-2">
       <h3 class="text-lg font-semibold ${p.headingText}">${title}</h3>
@@ -149,37 +159,29 @@
           </tr>
         </thead>
         <tbody class="text-gray-700">
-          ${persons.map((person, i) => {
-          const negativeWant = ["naxwazim", "naxwazî", "naxwaze", "naxwazin", "naxwazin", "naxwazin"];
-          const label = title === "İstemek Kipi" ? `${dixwaz[i]}/${negativeWant[i]}` : person;
-          return `
+          ${persons.map((person, i) => `
               <tr>
-                <td class="p-2 border ${p.border}">${label}</td>
+                <td class="p-2 border ${p.border}">${person}</td>
                 <td class="p-2 border ${p.border}">${posForms[i]}</td>
                 <td class="p-2 border ${p.border}">${negForms[i]}</td>
-              </tr>`;
-        }).join('')}
+              </tr>`).join('')}
         </tbody>
       </table>
     </div>`;
       }
 
-
-
       conjugationContainer.innerHTML = `
-  <h2 class="text-xl font-semibold ${p.headingText}">
-    Fiil: <span class="italic">${verb}</span>
-    &nbsp;&nbsp; Anlam: <span class="italic">${verbs[verb].definition}</span>
-    &nbsp;&nbsp; Kök: <span class="italic">${verbs[verb].root}</span>
-  </h2>
-  ${createTenseTable("Şimdiki Zaman", v.present, v.presentNegative)}
-  ${createTenseTable("İstemek Kipi", v.want, v.wantNegative)}
-  ${createTenseTable("Geçmiş Zaman", v.past, v.pastNegative)}
-  ${createTenseTable("Gelecek Zaman", v.future, v.futureNegative)}
-`;
-
+        <h2 class="text-xl font-semibold ${p.headingText}">
+          Fiil: <span class="italic">${verb}</span>
+          &nbsp;&nbsp; Anlam: <span class="italic">${verbs[verb].definition}</span>
+          &nbsp;&nbsp; Kök: <span class="italic">${verbs[verb].root}</span>
+        </h2>
+        ${createTenseTable("Şimdiki Zaman", v.present, v.presentNegative)}
+        ${createTenseTable("İstemek Kipi", v.want, v.wantNegative)}
+        ${createTenseTable("Geçmiş Zaman", v.past, v.pastNegative)}
+        ${createTenseTable("Gelecek Zaman", v.future, v.futureNegative)}
+      `;
     }
-
 
     verbSelect.addEventListener("change", e => {
       const rand = colorPalettes[Math.floor(Math.random() * colorPalettes.length)];
@@ -194,19 +196,15 @@
       const matches = Object.entries(verbs).filter(([v, d]) => {
         const verbNorm = normalizeForSearch(v);
         const defNorm = normalizeForSearch(d.definition);
-        const forms = Object.values(d.conjugations).flat(); // all forms
-
-        return (
-          verbNorm.includes(query) ||
-          defNorm.includes(query) ||
-          forms.some(form => normalizeForSearch(form || '').includes(query))
-        );
+        const forms = Object.values(d.conjugations).flat();
+        return verbNorm.includes(query) || defNorm.includes(query) || forms.some(form => normalizeForSearch(form || '').includes(query));
       });
       suggestions.innerHTML = matches.map(([v, d]) => `<li class="p-2 border-b last:border-none">${v} (${d.definition})</li>`).join('');
       suggestions.classList.remove("hidden");
       suggestions.querySelectorAll("li").forEach(li => {
         li.addEventListener("click", () => {
-          searchInput.value = v = li.textContent.split(" (")[0];
+          const v = li.textContent.split(" (")[0];
+          searchInput.value = v;
           suggestions.classList.add("hidden");
           const rand = colorPalettes[Math.floor(Math.random() * colorPalettes.length)];
           applyPalette(rand);
@@ -221,7 +219,96 @@
         suggestions.classList.add("hidden");
       }
     });
+
+    /* ========= DICTIONARY ========= */
+    let dict = {};
+    const dictSearch = document.getElementById("dict-search");
+    const dictSuggestions = document.getElementById("dict-suggestions");
+    const dictContainer = document.getElementById("dict-container");
+
+    fetch('Kurdish_Dictionary.csv')
+      .then(res => res.text())
+      .then(csv => {
+        const parsed = Papa.parse(csv, { header: true, skipEmptyLines: true });
+        parsed.data.forEach(row => {
+          dict[row.word] = {
+            meaning: row.meaning,
+            plural: row.plural,
+            singular: row.singular,
+            belirtisizPlural: row['belirtisiz plural'],
+            gender: row.gender,
+            iyelik: row.iyelik,
+            isimTamlamasi: row['isim tamlaması']
+          };
+        });
+      });
+
+    function renderDictEntry(word) {
+      if (!dict[word]) return;
+      const d = dict[word];
+      dictContainer.innerHTML = `
+        <h2 class="text-xl font-semibold text-green-800">
+          Kelime: <span class="italic">${word}</span> — <span>${d.meaning}</span>
+        </h2>
+        <table class="min-w-full border border-green-300 rounded-md text-sm">
+          <tbody>
+            <tr><td class="p-2 border">Çoğul</td><td class="p-2 border">${d.plural || '-'}</td></tr>
+            <tr><td class="p-2 border">Tekil</td><td class="p-2 border">${d.singular || '-'}</td></tr>
+            <tr><td class="p-2 border">Belirtisiz Çoğul</td><td class="p-2 border">${d.belirtisizPlural || '-'}</td></tr>
+            <tr><td class="p-2 border">Cinsiyet</td><td class="p-2 border">${d.gender || '-'}</td></tr>
+            <tr><td class="p-2 border">İyelik</td><td class="p-2 border">${d.iyelik || '-'}</td></tr>
+            <tr><td class="p-2 border">İsim Tamlaması</td><td class="p-2 border">${d.isimTamlamasi || '-'}</td></tr>
+          </tbody>
+        </table>
+      `;
+    }
+
+    dictSearch.addEventListener("input", e => {
+      const input = e.target.value.trim();
+      if (!input) return dictSuggestions.classList.add("hidden");
+      const query = normalizeForSearch(input);
+      const matches = Object.entries(dict).filter(([w, d]) => {
+        const wn = normalizeForSearch(w);
+        const mn = normalizeForSearch(d.meaning || '');
+        return wn.includes(query) || mn.includes(query);
+      });
+      dictSuggestions.innerHTML = matches.map(([w, d]) => `<li class="p-2 border-b last:border-none">${w} (${d.meaning})</li>`).join('');
+      dictSuggestions.classList.remove("hidden");
+      dictSuggestions.querySelectorAll("li").forEach(li => {
+        li.addEventListener("click", () => {
+          const w = li.textContent.split(" (")[0];
+          dictSearch.value = w;
+          dictSuggestions.classList.add("hidden");
+          renderDictEntry(w);
+        });
+      });
+    });
+
+    document.addEventListener("click", e => {
+      if (!dictSuggestions.contains(e.target) && e.target !== dictSearch) {
+        dictSuggestions.classList.add("hidden");
+      }
+    });
+
+    /* ========= TAB SWITCH ========= */
+    const tabVerbs = document.getElementById("tab-verbs");
+    const tabDict = document.getElementById("tab-dict");
+    const verbsSection = document.getElementById("verbs-section");
+    const dictSection = document.getElementById("dict-section");
+
+    tabVerbs.addEventListener("click", () => {
+      verbsSection.classList.remove("hidden");
+      dictSection.classList.add("hidden");
+      tabVerbs.classList.add("bg-blue-200");
+      tabDict.classList.remove("bg-green-200");
+    });
+
+    tabDict.addEventListener("click", () => {
+      verbsSection.classList.add("hidden");
+      dictSection.classList.remove("hidden");
+      tabDict.classList.add("bg-green-200");
+      tabVerbs.classList.remove("bg-blue-200");
+    });
   </script>
 </body>
-
 </html>
