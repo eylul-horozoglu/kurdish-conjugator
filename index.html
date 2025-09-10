@@ -252,6 +252,27 @@
             isimTamlamasi: row['isim tamlaması']
           };
         });
+        // Grab the dropdown
+        const dictSelect = document.getElementById("dict-select");
+
+        // Populate dropdown with all words
+        Object.keys(dict).forEach(word => {
+          const option = document.createElement("option");
+          option.value = word;
+          option.textContent = word;
+          dictSelect.appendChild(option);
+        });
+
+        // Show first entry by default
+        if (dictSelect.options.length > 0) {
+          renderDictEntry(dictSelect.value);
+        }
+
+        // When dropdown changes → update display
+        dictSelect.addEventListener("change", e => {
+          renderDictEntry(e.target.value);
+        });
+
       });
 
     function renderDictEntry(word) {
