@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="tr">
+
 <head>
   <meta charset="UTF-8" />
   <title>Kürtçe Dil Araçları</title>
@@ -9,12 +10,15 @@
     body {
       min-height: 100vh;
     }
-    #suggestions li:hover, #dict-suggestions li:hover {
+
+    #suggestions li:hover,
+    #dict-suggestions li:hover {
       background-color: rgba(0, 0, 0, 0.05);
       cursor: pointer;
     }
   </style>
 </head>
+
 <body class="min-h-screen bg-blue-50 text-gray-800 flex flex-col items-center justify-start p-6 gap-6">
   <h1 class="text-3xl font-bold text-blue-800">Kürtçe Dil Araçları</h1>
 
@@ -42,6 +46,7 @@
 
   <!-- Dictionary Section -->
   <div id="dict-section" class="w-full hidden flex flex-col items-center gap-6">
+    <!-- Search bar -->
     <div class="relative w-full max-w-xs">
       <input type="text" id="dict-search" placeholder="Kelime ara..."
         class="rounded-md border border-green-300 p-2 text-gray-700 w-full" autocomplete="off" />
@@ -50,8 +55,14 @@
       </ul>
     </div>
 
-    <div id="dict-container" class="max-w-4xl w-full bg-white rounded-2xl shadow-xl p-6 space-y-6"></div>
+    <!-- Dropdown -->
+    <label for="dict-select" class="font-semibold text-green-700">Kelime seçin:</label>
+    <select id="dict-select" class="rounded-md border border-green-300 p-2 text-gray-700 max-w-xs"></select>
+
+    <!-- Rendered dictionary entry -->
+    <div id="dict-container" class="max-w-4xl w-full bg-white rounded-2xl shadow-xl p-6 space-y-4"></div>
   </div>
+
 
   <script>
     /* ========= VERB CONJUGATOR ========= */
@@ -311,4 +322,5 @@
     });
   </script>
 </body>
+
 </html>
