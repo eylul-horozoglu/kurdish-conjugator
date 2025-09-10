@@ -279,9 +279,11 @@
       if (!dict[word]) return;
       const d = dict[word];
       dictContainer.innerHTML = `
-        <h2 class="text-xl font-semibold text-green-800">
-          Kelime: <span class="italic">${word}</span> — <span>${d.meaning}</span>
-        </h2>
+        <h2 class="text-xl font-semibold text-green-800 flex flex-wrap gap-8">
+  Kelime: <span class="italic">${word}</span>
+  <span>Anlam: <span class="italic">${d.meaning}</span></span>
+</h2>
+
         <table class="min-w-full border border-green-300 rounded-md text-sm">
           <tbody>
             <tr><td class="p-2 border">Çoğul</td><td class="p-2 border">${d.plural || '-'}</td></tr>
