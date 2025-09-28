@@ -14,6 +14,7 @@ balkêş,ilginç,-,-,-,-,-,-
 bandor,effect,-,-,-,-,-,-
 bapîr,büyükbaba,-,-,-,-,-,-
 bav,baba,-,-,-,-,-,-
+bawer kirin,inanmak,-,-,-,-,-,-
 bazar,pazar,-,-,-,-,-,-
 bê lîste,listesiz,-,-,-,-,-,-
 bedew,güzel,-,-,-,-,-,-
@@ -45,6 +46,7 @@ binkiras,"ic camasiri, gecelik",-,-,-,-,-,-
 bira,erkek kardeş,birayen,-,-,-,-,-
 bîrbir,olgun,-,-,-,-,-,-
 birû,kaş,-,-,-,-,-,-
+biryar dan,karar vermek,-,-,-,-,-,-
 çand,kültür,-,-,-,-,-,-
 çand/î,culture/cultural,-,-,-,-,-,-
 çarşem,çarşamba,-,-,-,-,-,-
@@ -54,16 +56,22 @@ birû,kaş,-,-,-,-,-,-
 çend,kaç,-,-,-,-,-,-
 çene,çene,-,-,-,-,-,-
 cih,"yer, mekan",-,-,-,-,-,-
+cih girtin,yer almak,-,-,-,-,-,-
 cîhan,world,-,-,-,-,-,-
 çile,ocak,-,-,-,-,-,-
 cilşo,camasir makinesi,-,-,-,-,-,-
 çima,neden,-,-,-,-,-,-
+çîn,sınıf (toplumsal),-,-,-,-,-,-
+çînî,sınıfsal,-,-,-,-,-,-
 çîp,bacak,-,-,-,-,-,-
+civak,toplum,-,-,-,-,-,-
 civîn,toplantı,-,-,-,-,-,-
 ciwan,genc,-,-,-,-,-,-
 çong,diz,-,-,-,-,-,-
 cotkar,çiftçi,-,-,-,-,-,-
 cotmeh,ekim,-,-,-,-,-,-
+cudâ,farklı,-,-,-,-,-,-
+da ku,so that,-,-,-,-,-,-
 dadger,"yargıç, hakim",-,-,-,-,-,-
 dapîr,büyükanne,-,-,-,-,-,-
 dar,ağaç,-,-,-,-,-,darê
@@ -74,353 +82,441 @@ dêm,yanak,-,-,-,-,-,-
 dema ku,"sırasında, when, while",-,-,-,-,-,-
 dendiken gulan,ay cekirdegi,-,-,-,-,-,-
 derdor,etraf,-,-,-,-,-,-
-derdor,"etraf, çevre",-,-,-,-,-,-
-dêre,etek,-,-,-,-,-,-
-deri,kapı,-,-,-,m,deriye,-
-dermansaz,eczacı,-,-,-,-,-,-
-derpê,kulot,-,-,-,-,-,-
-derpê,"ic camarisi, kulot",-,-,-,-,-,-
-derspirî caran,çoğu zaman,-,-,-,-,-,-
-dest,el,-,-,-,-,-,-
-dev,ağiz,-,-,-,-,-,-
-dewlemend,zengin,-,-,-,-,-,-
-di heman demê de,aynı zamanda,-,-,-,-,-,-
-dibistan,okul,-,-,-,-,-,-
-dibistana navîn,middle school,-,-,-,-,-,-
-dik,sahne,-,-,-,-,-,-
-dilovan,nazik,-,-,-,-,-,-
-dilovan,nazik,-,-,-,-,-,-
-dîmen,"görüntü, sahne",-,-,-,-,-,-
-dims,pekmez,-,-,-,-,-,-
-din,başka,-,-,-,-,-,-
-dinê,world,-,-,-,-,-,-
-diran,dişler,-,-,-,-,-,-
-dirêj,uzun,-,-,-,-,-,-
-dîrok,tarih,-,-,-,-,-,-
-divê,must/lazim,-,-,-,-,-,-
-dîwar,sur,-,-,-,-,-,-
-dixwazi,istersen,-,-,-,-,-,-
-dolmîk,kabak,-,-,-,-,-,-
-duşem,pazartesi,-,-,-,-,-,-
-endam,üye,-,-,-,-,-,-
-endezyar,mühendis,-,-,-,-,-,-
-enî,alın,-,-,-,-,-,-
-enîşk,dirsek,-,-,-,-,-,-
-erzan,ucuz,-,-,-,-,-,-
-êş û kul,acı ve dertler,-,-,-,-,-,-
-ev qas bes e,bu kadar yeterli,-,-,-,-,-,-
-êvar,akşam,-,-,-,-,-,-
-êvaran,akşamları,-,-,-,-,-,-
-ew karê paşê ye,o sonranin isi,-,-,-,-,-,-
-fahîke,kazak,-,-,-,-,-,-
-fakulte,department,-,-,-,-,-,-
-fazla zamanimiz yok,,-,-,-,-,-,-
-fêk,meyve?,-,-,-,-,-,-
-firaqşo,bulasik makinesi,-,-,-,-,-,-
-firavîn,öğlen yemeği,-,-,-,-,-,-
-firin,firin,-,-,-,-,-,-
-firingî,domates,-,-,-,-,-,-
-firosgeh,dukkan,-,-,-,-,-,-
-fîstan,elbise,-,-,-,-,-,-
-gel,halk,-,-,-,-,-,-
-gelek,çok,-,-,-,-,-,-
-gelo,acaba,-,-,-,-,-,-
-gelo li male xeta telefone heye,evde telefon hatti var mi,-,-,-,-,-,-
-ger,seyahat,-,-,-,-,-,-
-germ,sicak,-,-,-,-,-,-
-giran,agir,-,-,-,-,-,-
-girê dan,baglamak,-,-,-,-,-,-
-girîng,önemli,-,-,-,-,-,-
-gizêr,havuç,-,-,-,-,-,-
-gîzme,çizme,-,-,-,-,-,-
-gore,çorap,-,-,-,-,-,-
-guh,kulak,-,-,-,-,-,-
-gul,"çiçek, gül",-,-,-,-,-,-
-gulan,mayıs,-,-,-,-,-,-
-gund,village,-,-,-,-,-,-
-gûz,ceviz,-,-,-,-,-,-
-gûzek,ayak bilegi,-,-,-,-,-,-
-havîn,yaz,-,-,-,-,-,-
-hefte,hafta,-,-,-,-,-,-
-heja,değerli,-,-,-,-,-,-
-hêjir,incir,-,-,-,-,-,-
-hêk (egg gibi),yumurta,-,-,-,-,-,-
-helbest,şiir,-,-,-,-,-,-
-helbest,şiir,-,-,-,-,-,-
-helbestvan,şair,-,-,-,-,-,-
-helesor,pembe,-,-,-,-,-,-
-heman,aynı,-,-,-,-,-,-
-hemşîre,hemşire,-,-,-,-,-,-
-her wiha,bununla beraber,-,-,-,-,-,-
-her wiha,ayni sekilde,-,-,-,-,-,-
-herem,region,-,-,-,-,-,-
-heval,arkadaş,hevalen,-,hevalin,-,-,-
-hevser,"eş, karı, koca",-,-,-,-,-,-
-hezîran,haziran,-,-,-,-,-,-
-hin tişt bên bîra me,bazi seyler aklimiza gelir,-,-,-,-,-,-
-hinar,nar,-,-,-,-,-,-
-hingiv,bal,-,-,-,-,-,-
-hingivîn,bal rengi?,-,-,-,-,-,-
-hirmî,armut,-,-,-,-,-,-
-hişk,sert,-,-,-,-,-,-
-hogir,çiftçi,-,-,-,-,-,-
-hosta,hasta,-,-,-,-,-,-
-hostayî,ustalıkla,-,-,-,-,-,-
-hûnandin,"örmek, işlemek",-,-,-,-,-,-
-huner,sanat,-,-,-,-,-,-
-îlon,eylül,-,-,-,-,-,-
-în,cuma,-,-,-,-,-,-
-îsot,biber,-,-,-,-,-,-
-jar,zayif,-,-,-,-,-,-
-jehatî,"becerikli, çalışkan",-,-,-,-,-,-
-ji,-den/-dan,-,-,-,-,-,-
-ji ber ku,"çünkü, olduğu için",-,-,-,-,-,-
-ji ber ku,cunku,-,-,-,-,-,-
-ji ber ku,because,-,-,-,-,-,-
-ji bilî,"hariç, haricinde",-,-,-,-,-,-
-ji bo,için,-,-,-,-,-,-
-ji xeyni,disinda,-,-,-,-,-,-
-jin,kadın,-,-,-,-,-,-
-jinap,amca eşi,-,-,-,-,-,-
-jir,yaşlı,-,-,-,-,-,-
-jîr,akıllı,-,-,-,-,-,-
-jixwe,zaten,-,-,-,-,-,-
-ka,hele,-,-,-,-,-,-
-ka em listeyeke amade bikin,hadi liste hazirlayalim,-,-,-,-,-,-
-kahverengi,qehweyî,-,-,-,-,-,-
-kanî,çeşme,-,-,-,-,-,-
-kanî,kuyu,-,-,-,-,-,-
-kanûn,aralık,-,-,-,-,-,-
-karker,işçi,-,-,-,-,-,-
-karmend,memur,-,-,-,-,-,-
-karmend,memur / çalışan,-,-,-,-,-,-
-karsaz,iş adamı,-,-,-,-,-,-
-kartol,patates,-,-,-,-,-,-
-keç,kız,-,keçek,-,-,-,-
-kedkar,çalışkan,-,-,-,-,-,-
-kelandin,kaynatmak,-,-,-,-,-,-
-keleh,kale,-,-,-,-,-,-
-kelem,lahana,-,-,-,-,-,-
-kelem,lahana,-,-,-,-,-,-
-kengî,ne zaman,-,-,-,-,-,-
-kerem bike,buyur,-,-,-,-,-,-
-kesk,yesil,-,-,-,-,-,-
-kevn,eski,-,-,-,-,-,-
-kevnar,"eski, antika",-,-,-,-,-,-
-kevneşopî,geleneksel,-,-,-,-,-,-
-kîjan,hangi,-,-,-,-,-,-
-kin,kisa,-,-,-,-,-,-
-kırmızı,sor,-,-,-,-,-,-
-kom,grup,-,-,-,-,-,-
-kom,topluluk,-,-,-,-,-,-
-komele,dernek,-,-,-,-,-,-
-kompiter,bilgisayar,-,-,-,-,-,-
-ku,which/that,-,-,-,-,-,-
-kur,erkek çocuk,-,-,-,-,-,-
-kurtek,şort,-,-,-,-,-,-
-kurtek,kisa kol gomlek,-,-,-,-,-,-
-lawaz,zayıf,-,-,-,-,-,-
-le bele,ama,-,-,-,-,-,-
-lêkolinêr,araştırmacı,-,-,-,-,-,-
-lepik,eldiven,-,-,-,-,-,-
-lêv,dudak,-,-,-,-,-,-
-lewma,"cunku, bu yuzden",-,-,-,-,-,-
-li hemberi,karşısında,-,-,-,-,-,-
-lîmon,limon,-,-,-,-,-,-
-ling/pê,ayak,-,-,-,-,-,-
-lîse,high school,-,-,-,-,-,-
-lîstik,oyun,-,-,-,-,-,-
-lîstok,oyuncak,-,-,-,-,-,-
-mal,ev,-,-,-,f,mala,-
-malbat,aile,-,-,-,-,malbata,-
-malbat,family,-,-,-,-,-,-
-mamoste,öğretmen,-,-,-,-,-,-
-mast,yogurt,-,-,-,-,-,-
-mavi,şîn,-,-,-,-,-,-
-merc,condition,-,-,-,-,-,-
-met,hala,-,-,-,f,meta,-
-mevan,misafir,mevanen,-,-,-,-,-
-mêvan,"misafir, ziyaretçi",-,-,-,-,-,-
-mêvanperwer,misafirperver,-,-,-,-,-,-
-mezin,büyük,-,-,-,-,-,-
-mezin bûn,to grow up,-,-,-,-,-,-
-mihrican,festival,-,-,-,-,-,-
-mijar,konu,-,-,-,-,-,-
-mijdar,kasım,-,-,-,-,-,-
-mil,kol,-,-,-,-,-,-
-mîras,miras,-,-,-,-,-,-
-mirov,insan,-,-,-,-,-,-
-mişmiş,kayisi,-,-,-,-,-,-
-mişmiş,kayisi,-,-,-,-,-,-
-mişmişî,turuncu,-,-,-,-,-,-
-mizgeft,camii,-,-,-,-,-,-
-mor,mor,-,-,-,-,-,-
-nas bûn,to get to know,-,-,-,-,-,-
-nasname,identity,-,-,-,-,-,-
-nasname,identity,-,-,-,-,-,-
-nasname,kimlik,-,-,-,-,-,-
-nav,isim,-,-,-,m,navê,-
-navber,between,-,-,-,-,-,-
-navdar,ünlü,-,-,-,-,-,-
-navend,center,-,-,-,-,-,-
-navend,merkez,-,-,-,-,-,-
-nazik,sensitive,-,-,-,-,-,-
-ne pewist e,lazim degil,-,-,-,-,-,-
-nerm,yumusak,-,-,-,-,-,-
-netew,nation,-,-,-,-,-,-
-netewî,national,-,-,-,-,-,-
-next em herin,oyleyse gidelim,-,-,-,-,-,-
-nexweş,hasta,-,-,-,-,-,-
-niha,simdi,-,-,-,-,-,-
-nîsan,nisan,-,-,-,-,-,-
-niştecih,"sakin, yerli",-,-,-,-,-,-
-nîvro,öğlen,-,-,-,-,-,-
-nizim,alçak,-,-,-,-,-,-
-nû,yeni,-,-,-,-,-,-
-nûjen,modern,-,-,-,-,-,-
-palto,palto,-,-,-,-,-,-
-panotan,"bucks, banknot, lira",-,-,-,-,-,-
-parêzer,avukat,-,-,-,-,-,-
-paşiv,,-,-,-,-,-,-
-payîz,sonbahar,-,-,-,-,-,-
-pediviya wan,ihtiyaci,-,-,-,-,-,-
-pêncşem,perşembe,-,-,-,-,-,-
-penêr,peynir,-,-,-,-,-,-
-pêsíst,lazim,-,-,-,-,-,-
-pîr,yasli,-,-,-,-,-,-
-pirteqal,portakal,-,-,-,-,-,-
-pirtuk,kitap,-,-,-,-,-,-
-piştî,sonra,-,-,-,-,-,-
-pîvaz,sogan,-,-,-,-,-,-
-por,saç,-,-,-,-,-,-
-por,saç,-,-,-,-,-,-
-poz,burun,-,-,-,-,-,-
-qehweyî,kahverengi,-,-,-,-,-,-
-qelandin,kavurmak (qelin-),-,-,-,-,-,-
-qelew,kilolu,-,-,-,-,-,-
-qelî,kavurma,-,-,-,-,-,-
-rengîn,renkli,-,-,-,-,-,-
-reş,siyah,-,-,-,-,-,-
-rewş,situation,-,-,-,-,-,-
-rêziman,dilbilgisi,-,-,-,-,-,-
-roj,gün,-,-,-,-,-,-
-rojava,west,-,-,-,-,-,-
-rojhilat,doğu,-,-,-,-,-,-
-rojname,gazete,-,-,-,-,-,-
-rojnamevan,gazeteci,-,-,-,-,-,-
-ronakbîr,intellectual,-,-,-,-,-,-
-ronakbîr,"aydın, aydın kes",-,-,-,-,-,-
-rû,yüz,-,-,-,-,-,-
-rupel,sayfa,-,-,-,-,-,-
-sade,"sade, basit",-,-,-,-,-,-
-sako,ceket,-,-,-,-,-,-
-sal,yıl,-,-,-,-,-,-
-şal,pantolon,-,-,-,-,-,-
-șano,tiyatro,-,-,-,-,-,-
-şanoger,tiyatrocu,-,-,-,-,-,-
-sansûr,sansür,-,-,-,-,-,-
-sar,soguk,-,-,-,-,-,-
-sarinc,buzdolabi,-,-,-,-,-,-
-sarı,zer,-,-,-,-,-,-
-şemî,cumartesi,-,-,-,-,-,-
-ser,üst,-,-,-,-,-,-
-serdem,period/ era,-,-,-,-,-,-
-serê pêşin,ilk olarak,-,-,-,-,-,-
-seretayî,primary,-,-,-,-,-,-
-serî,kafa,-,-,-,-,-,-
-sermil,omuz,-,-,-,-,-,-
-şert,condition,-,-,-,-,-,-
-şert û merc,şartlar ve koşullar,-,-,-,-,-,-
-sêşem,salı,-,-,-,-,-,-
-sev,elma,-,-,-,-,-,-
-şev,gece,-,-,-,-,-,-
-şewqe,sapka,-,-,-,-,-,-
-sewze,sebze?,-,-,-,-,-,-
-sibat,şubat,-,-,-,-,-,-
-sibeh,sabah,-,-,-,-,-,-
-şimik,terlik,-,-,-,-,-,-
-şimik,terlik,-,-,-,-,-,-
-şîn,mavi,-,-,-,-,-,-
-sing,gogus,-,-,-,-,-,-
-sîr,sarimsak,-,-,-,-,-,-
-şîr,süt,-,-,-,-,-,-
-şîrîn,tatli,-,-,-,-,-,-
-sirûşt,doğa,-,-,-,-,-,-
-şîv,akşam yemeği,-,-,-,-,-,-
-sivik,hafif,-,-,-,-,-,-
-siyah,reş,-,-,-,-,-,-
-siyasî,political,-,-,-,-,-,-
-şofben,suyun isisini ayarlayan sey,-,-,-,-,-,-
-sol,ayakkabi,-,-,-,-,-,-
-sor,kırmızı,-,-,-,-,-,-
-spî,beyaz,-,-,-,-,-,-
-stû,boyun,-,-,-,-,-,-
-stûpêç,atkı,-,-,-,-,-,-
-şûm,utangaç,-,-,-,-,-,-
-taşte,kahvaltı,-,-,-,-,-,-
-taştê,kahvaltı,-,-,-,-,-,-
-tax,mahalle,-,-,-,-,taxa,-
-tebax,ağustos,-,-,-,-,-,-
-têkber,alet,-,-,-,-,-,-
-tekildar,"alakalı, ilgili",-,-,-,-,-,-
-televizyon,televizyon,-,-,-,-,-,-
-telkarî,kuyumcu / gümüş ustası,-,-,-,-,-,-
-temam kirin,to finish,-,-,-,-,-,-
-temdarasevan,izleyici,temdarasevanen,-,-,-,-,-
-teral,yakışıklı,-,-,-,-,-,-
-tî,susuz,-,-,-,-,-,-
-tijî,dolu,-,-,-,-,-,-
-tilî,parmak,-,-,-,-,-,-
-tirî,uzum,-,-,-,-,-,-
-tirî,uzum,-,-,-,-,-,-
-tîrmeh,temmuz,-,-,-,-,-,-
-tirş,eksi,-,-,-,-,-,-
-tivir,turp,-,-,-,-,-,-
-to,kaymak,-,-,-,-,-,-
-tozmij,supurge,-,-,-,-,-,-
-tu,hiç,-,-,-,-,-,-
-turuncu,mişmişî,-,-,-,-,-,-
-wane,ders,-,-,-,-,-,-
-wêje,edebiyat,-,-,-,-,-,-
-wêje,edebiyat,-,-,-,-,-,-
-wêje/yî,literature/literary,-,-,-,-,-,-
-wekî din,bunlardan baska,-,-,-,-,-,-
-welatparêz,patriot,-,-,-,-,-,-
-welatparêz,vatansever,-,-,-,-,-,-
-wenesaz,ressam,-,-,-,-,-,-
-wişne,"visne, kiraz",-,-,-,-,-,-
-xal,dayı,-,-,-,-,-,-
-xaltî,teyze,-,-,-,-,-,-
-xaltîk,teyze,-,-,-,-,-,-
-xani,,-,-,-,-,xaniye,-
-xanî,ev,-,-,-,-,-,-
-xelq,halk,-,-,-,-,-,-
-xem nake,dert degil,-,-,-,-,-,-
-xew,uyku,-,-,-,-,-,-
-xiyar,salatalik,-,-,-,-,-,-
-xort,genç,-,xortek,-,m,xorte,-
-xox,seftali,-,-,-,-,-,-
-xurinî,,-,-,-,-,-,-
-xwebûn,varlık,-,-,-,-,-,-
-xwendar,"okumuş, tahsilli",-,-,-,-,-,-
-xwendekar,öğrenci,-,-,-,-,-,-
-xweşk,güzel,-,-,-,-,-,-
-xwîngerm,"sıcakkanlı, sempatik, sevimli",-,-,-,-,-,-
-xwişk,kız kardeş,xwişken,xwişkek,-,f,xwişka,-
-ya din,diğeri,-,-,-,-,-,-
-yekşem,pazar,-,-,-,-,-,-
-yeşil,kesk,-,-,-,-,-,-
-zana,"akıllı, bilgin",-,-,-,-,-,-
-zanîngeh,üniversite,-,-,-,-,-,-
-zarok,çocuk,-,-,-,-,-,-
-zarokatî,childhood,-,-,-,-,-,-
-zebeş,karpuz,-,-,-,-,-,-
-zêde,fazla,-,-,-,-,-,-
-zede dema me tune ye,,-,-,-,-,-,-
-zend,bilek,-,-,-,-,-,-
-zer,sari,-,-,-,-,-,-
-zexm,sağlam,-,-,-,-,-,-
-zeytûn,zeytin,-,-,-,-,-,-
-zilam,adam,-,zilamek,-,-,-,-
-ziman,"dil, lisan",-,-,-,-,-,-
-zivistan,kış,-,-,-,-,-,-
+dêre,"etraf, çevre",-,-,-,-,-,-
+deri,etek,-,-,-,-,-,-
+dermansaz,kapı,-,-,-,m,deriye,-
+derpê,eczacı,-,-,-,-,-,-
+derspirî caran,kulot,-,-,-,-,-,-
+dest,"ic camarisi, kulot",-,-,-,-,-,-
+dev,çoğu zaman,-,-,-,-,-,-
+dewlemend,el,-,-,-,-,-,-
+di heman demê de,ağiz,-,-,-,-,-,-
+dibistan,zengin,-,-,-,-,-,-
+dibistana navîn,zengin,-,-,-,-,-,-
+dik,aynı zamanda,-,-,-,-,-,-
+dilovan,okul,-,-,-,-,-,-
+dîmen,middle school,-,-,-,-,-,-
+dims,sahne,-,-,-,-,-,-
+din,nazik,-,-,-,-,-,-
+dinê,nazik,-,-,-,-,-,-
+diran,"görüntü, sahne",-,-,-,-,-,-
+dirêj,pekmez,-,-,-,-,-,-
+dîrok,başka,-,-,-,-,-,-
+divê,other,-,-,-,-,-,-
+dîwar,world,-,-,-,-,-,-
+dixwazi,dişler,-,-,-,-,-,-
+dolmîk,uzun,-,-,-,-,-,-
+dûr ketin,tarih,-,-,-,-,-,-
+duşem,must/lazim,-,-,-,-,-,-
+endam,sur,-,-,-,-,-,-
+endezyar,istersen,-,-,-,-,-,-
+enî,kabak,-,-,-,-,-,-
+enîşk,uzaklaşmak,-,-,-,-,-,-
+erzan,pazartesi,-,-,-,-,-,-
+êş û kul,üye,-,-,-,-,-,-
+ev qas bes e,mühendis,-,-,-,-,-,-
+êvar,alın,-,-,-,-,-,-
+êvaran,dirsek,-,-,-,-,-,-
+ew karê paşê ye,ucuz,-,-,-,-,-,-
+fahîke,acı ve dertler,-,-,-,-,-,-
+fakulte,bu kadar yeterli,-,-,-,-,-,-
+fazla zamanimiz yok,akşam,-,-,-,-,-,-
+fêk,akşamları,-,-,-,-,-,-
+firaqşo,o sonranin isi,-,-,-,-,-,-
+firavîn,kazak,-,-,-,-,-,-
+firin,department,-,-,-,-,-,-
+firingî,-,-,-,-,-,-,-
+firosgeh,meyve?,-,-,-,-,-,-
+fîstan,bulasik makinesi,-,-,-,-,-,-
+gel,öğlen yemeği,-,-,-,-,-,-
+gelek,firin,-,-,-,-,-,-
+gelo,domates,-,-,-,-,-,-
+gelo li male xeta telefone heye,dukkan,-,-,-,-,-,-
+ger,elbise,-,-,-,-,-,-
+germ,halk,-,-,-,-,-,-
+geş kirin,çok,-,-,-,-,-,-
+giran,acaba,-,-,-,-,-,-
+girê dan,evde telefon hatti var mi,-,-,-,-,-,-
+girîng,seyahat,-,-,-,-,-,-
+gizêr,sicak,-,-,-,-,-,-
+gîzme,"büyütmek, coşturmak, beslemek",-,-,-,-,-,-
+gore,agir,-,-,-,-,-,-
+gotar,baglamak,-,-,-,-,-,-
+guh,önemli,-,-,-,-,-,-
+guherandin,havuç,-,-,-,-,-,-
+gul,çizme,-,-,-,-,-,-
+gulan,çorap,-,-,-,-,-,-
+gule,makale,-,-,-,-,-,-
+gule kirin,kulak,-,-,-,-,-,-
+gund,değiştirmek,-,-,-,-,-,-
+gûz,"çiçek, gül",-,-,-,-,-,-
+gûzek,mayıs,-,-,-,-,-,-
+havîn,mermi,-,-,-,-,-,-
+hefte,vurmak (shoot),-,-,-,-,-,-
+heja,village,-,-,-,-,-,-
+hêjir,ceviz,-,-,-,-,-,-
+hêk (egg gibi),ayak bilegi,-,-,-,-,-,-
+helbest,yaz,-,-,-,-,-,-
+helbestvan,hafta,-,-,-,-,-,-
+helesor,değerli,-,-,-,-,-,-
+heman,incir,-,-,-,-,-,-
+hemşîre,yumurta,-,-,-,-,-,-
+heq,şiir,-,-,-,-,-,-
+her çend,şiir,-,-,-,-,-,-
+her tim,şair,-,-,-,-,-,-
+her wiha,pembe,-,-,-,-,-,-
+herem,aynı,-,-,-,-,-,-
+herêm,hemşire,-,-,-,-,-,-
+hest,"hak, hukuk",-,-,-,-,-,-
+heval,rağmen,-,-,-,-,-,-
+hevaltî bike,her zaman,-,-,-,-,-,-
+hevser,bununla beraber,-,-,-,-,-,-
+hewl dan,ayni sekilde,-,-,-,-,-,-
+hezîran,region,-,-,-,-,-,-
+hilbijartin,bölge,-,-,-,-,-,-
+hin tişt bên bîra me,his,-,-,-,-,-,-
+hinar,arkadaş,hevalen,-,hevalin,-,-,-
+hingiv,dost olmak,-,-,-,-,-,-
+hingivîn,"eş, karı, koca",-,-,-,-,-,-
+hirmî,uğraşmak,-,-,-,-,-,-
+hişk,haziran,-,-,-,-,-,-
+hogir,seçmek,-,-,-,-,-,-
+hosta,bazi seyler aklimiza gelir,-,-,-,-,-,-
+hostayî,nar,-,-,-,-,-,-
+hûnandin,bal,-,-,-,-,-,-
+hundir,bal rengi?,-,-,-,-,-,-
+huner,armut,-,-,-,-,-,-
+îlon,sert,-,-,-,-,-,-
+în,çiftçi,-,-,-,-,-,-
+îsot,hasta,-,-,-,-,-,-
+îstifa kirin,ustalıkla,-,-,-,-,-,-
+jar,"örmek, işlemek",-,-,-,-,-,-
+jehatî,iç,-,-,-,-,-,-
+ji,sanat,-,-,-,-,-,-
+ji …. nerazî man,eylül,-,-,-,-,-,-
+ji ber ku,cuma,-,-,-,-,-,-
+ji bilî,biber,-,-,-,-,-,-
+ji bo,istifa etmek,-,-,-,-,-,-
+ji dayik bûn,zayif,-,-,-,-,-,-
+ji dest dan,"becerikli, çalışkan",-,-,-,-,-,-
+ji nêz ve,-den/-dan,-,-,-,-,-,-
+ji xeyni,…den hoşnutsuz kalmak,-,-,-,-,-,-
+jin,"çünkü, olduğu için",-,-,-,-,-,-
+jinap,cunku,-,-,-,-,-,-
+jir,because,-,-,-,-,-,-
+jîr,"hariç, haricinde",-,-,-,-,-,-
+jixwe,için,-,-,-,-,-,-
+ka,doğmak,-,-,-,-,-,-
+ka em listeyeke amade bikin,kaybetmek,-,-,-,-,-,-
+kahverengi,yakından,-,-,-,-,-,-
+kanî,disinda,-,-,-,-,-,-
+kanûn,kadın,-,-,-,-,-,-
+karker,amca eşi,-,-,-,-,-,-
+karmend,yaşlı,-,-,-,-,-,-
+karsaz,akıllı,-,-,-,-,-,-
+kartol,zaten,-,-,-,-,-,-
+keç,hele,-,-,-,-,-,-
+kedkar,hadi liste hazirlayalim,-,-,-,-,-,-
+kelandin,qehweyî,-,-,-,-,-,-
+keleh,çeşme,-,-,-,-,-,-
+kelem,kuyu,-,-,-,-,-,-
+kengî,aralık,-,-,-,-,-,-
+kerem bike,işçi,-,-,-,-,-,-
+kesk,memur,-,-,-,-,-,-
+kevn,memur / çalışan,-,-,-,-,-,-
+kevnar,iş adamı,-,-,-,-,-,-
+kevneşopî,patates,-,-,-,-,-,-
+kîjan,kız,-,keçek,-,-,-,-
+kin,çalışkan,-,-,-,-,-,-
+kırmızı,emekçi,-,-,-,-,-,-
+kom,kaynatmak,-,-,-,-,-,-
+komele,kale,-,-,-,-,-,-
+kompiter,lahana,-,-,-,-,-,-
+ku,lahana,-,-,-,-,-,-
+kur,ne zaman,-,-,-,-,-,-
+kûr,buyur,-,-,-,-,-,-
+kurtek,yesil,-,-,-,-,-,-
+lawaz,eski,-,-,-,-,-,-
+le bele,"eski, antika",-,-,-,-,-,-
+lêkolinêr,geleneksel,-,-,-,-,-,-
+lepik,hangi,-,-,-,-,-,-
+lêv,kisa,-,-,-,-,-,-
+lewma,sor,-,-,-,-,-,-
+li hember,grup,-,-,-,-,-,-
+li hemberi,topluluk,-,-,-,-,-,-
+lîmon,dernek,-,-,-,-,-,-
+ling/pê,bilgisayar,-,-,-,-,-,-
+lîse,which/that,-,-,-,-,-,-
+lîstik,erkek çocuk,-,-,-,-,-,-
+lîstok,derin,-,-,-,-,-,-
+mal,şort,-,-,-,-,-,-
+malbat,kisa kol gomlek,-,-,-,-,-,-
+mamoste,zayıf,-,-,-,-,-,-
+mast,ama,-,-,-,-,-,-
+mavi,araştırmacı,-,-,-,-,-,-
+merc,eldiven,-,-,-,-,-,-
+met,dudak,-,-,-,-,-,-
+mevan,"cunku, bu yuzden",-,-,-,-,-,-
+mêvan,karşı,-,-,-,-,-,-
+mêvanperwer,karşısında,-,-,-,-,-,-
+mezin,limon,-,-,-,-,-,-
+mezin bûn,ayak,-,-,-,-,-,-
+mihrican,high school,-,-,-,-,-,-
+mijar,oyun,-,-,-,-,-,-
+mijdar,oyuncak,-,-,-,-,-,-
+mil,ev,-,-,-,f,mala,-
+mîras,aile,-,-,-,-,malbata,-
+mirov,family,-,-,-,-,-,-
+mişmiş,öğretmen,-,-,-,-,-,-
+mişmişî,yogurt,-,-,-,-,-,-
+mizgeft,şîn,-,-,-,-,-,-
+mor,condition,-,-,-,-,-,-
+nas bûn,hala,-,-,-,f,meta,-
+nasname,misafir,mevanen,-,-,-,-,-
+nav,"misafir, ziyaretçi",-,-,-,-,-,-
+navber,misafirperver,-,-,-,-,-,-
+navdar,büyük,-,-,-,-,-,-
+navend,to grow up,-,-,-,-,-,-
+nazik,festival,-,-,-,-,-,-
+ne pewist e,konu,-,-,-,-,-,-
+neheq,kasım,-,-,-,-,-,-
+nemaze,kol,-,-,-,-,-,-
+nerazî man,miras,-,-,-,-,-,-
+nerazîbûn,insan,-,-,-,-,-,-
+nerm,kayisi,-,-,-,-,-,-
+netew,kayisi,-,-,-,-,-,-
+netewî,turuncu,-,-,-,-,-,-
+next em herin,camii,-,-,-,-,-,-
+nexweş,mor,-,-,-,-,-,-
+niha,to get to know,-,-,-,-,-,-
+nîsan,identity,-,-,-,-,-,-
+niştecih,identity,-,-,-,-,-,-
+nîvro,kimlik,-,-,-,-,-,-
+nizim,isim,-,-,-,m,navê,-
+nû,between,-,-,-,-,-,-
+nûjen,ünlü,-,-,-,-,-,-
+palto,ünlü,-,-,-,-,-,-
+panotan,center,-,-,-,-,-,-
+parêzer,merkez,-,-,-,-,-,-
+paşiv,sensitive,-,-,-,-,-,-
+payîz,lazim degil,-,-,-,-,-,-
+pediviya wan,adaletsizlik,-,-,-,-,-,-
+pêncşem,özellikle,-,-,-,-,-,-
+penêr,hoşnutsuz kalmak,-,-,-,-,-,-
+pergal,hoşnutsuzluk,-,-,-,-,-,-
+pêsíst,yumusak,-,-,-,-,-,-
+pîr,nation,-,-,-,-,-,-
+pirteqal,national,-,-,-,-,-,-
+pirtuk,oyleyse gidelim,-,-,-,-,-,-
+piştî,hasta,-,-,-,-,-,-
+pîvaz,simdi,-,-,-,-,-,-
+por,nisan,-,-,-,-,-,-
+poz,"sakin, yerli",-,-,-,-,-,-
+qehweyî,öğlen,-,-,-,-,-,-
+qelandin,alçak,-,-,-,-,-,-
+qelew,yeni,-,-,-,-,-,-
+qelî,modern,-,-,-,-,-,-
+reng,palto,-,-,-,-,-,-
+rengîn,"bucks, banknot, lira",-,-,-,-,-,-
+reş,avukat,-,-,-,-,-,-
+rewş,-,-,-,-,-,-,-
+rexne,sonbahar,-,-,-,-,-,-
+rêziman,ihtiyaci,-,-,-,-,-,-
+roj,perşembe,-,-,-,-,-,-
+rojava,peynir,-,-,-,-,-,-
+rojhilat,sistem,-,-,-,-,-,-
+rojname,lazim,-,-,-,-,-,-
+rojnamevan,yasli,-,-,-,-,-,-
+ronakbîr,portakal,-,-,-,-,-,-
+rû,kitap,-,-,-,-,-,-
+rû bi rû man,sonra,-,-,-,-,-,-
+rupel,sogan,-,-,-,-,-,-
+sade,saç,-,-,-,-,-,-
+sako,saç,-,-,-,-,-,-
+sal,burun,-,-,-,-,-,-
+şal,kahverengi,-,-,-,-,-,-
+șano,kavurmak (qelin-),-,-,-,-,-,-
+şanoger,kilolu,-,-,-,-,-,-
+sansûr,kavurma,-,-,-,-,-,-
+sar,şekil,-,-,-,-,-,-
+sarinc,renkli,-,-,-,-,-,-
+sarı,siyah,-,-,-,-,-,-
+şemî,situation,-,-,-,-,-,-
+ser,eleştiri,-,-,-,-,-,-
+serdem,dilbilgisi,-,-,-,-,-,-
+serê pêşin,gün,-,-,-,-,-,-
+seretayî,west,-,-,-,-,-,-
+serî,doğu,-,-,-,-,-,-
+sermil,gazete,-,-,-,-,-,-
+şert,gazeteci,-,-,-,-,-,-
+şert û merc,intellectual,-,-,-,-,-,-
+sêşem,"aydın, aydın kes",-,-,-,-,-,-
+sev,yüz,-,-,-,-,-,-
+şev,yüz yüze kalmak,-,-,-,-,-,-
+şewqe,sayfa,-,-,-,-,-,-
+sewze,"sade, basit",-,-,-,-,-,-
+sibat,ceket,-,-,-,-,-,-
+sibeh,yıl,-,-,-,-,-,-
+şimik,pantolon,-,-,-,-,-,-
+şîn,tiyatro,-,-,-,-,-,-
+sing,tiyatrocu,-,-,-,-,-,-
+sîr,sansür,-,-,-,-,-,-
+şîr,soguk,-,-,-,-,-,-
+şîrîn,buzdolabi,-,-,-,-,-,-
+sirûşt,zer,-,-,-,-,-,-
+şîv,cumartesi,-,-,-,-,-,-
+sivik,üst,-,-,-,-,-,-
+siyah,period/ era,-,-,-,-,-,-
+siyasî,ilk olarak,-,-,-,-,-,-
+şofben,primary,-,-,-,-,-,-
+sol,kafa,-,-,-,-,-,-
+sor,omuz,-,-,-,-,-,-
+spî,condition,-,-,-,-,-,-
+stû,şartlar ve koşullar,-,-,-,-,-,-
+stûpêç,salı,-,-,-,-,-,-
+şûm,elma,-,-,-,-,-,-
+taşte,gece,-,-,-,-,-,-
+taştê,sapka,-,-,-,-,-,-
+tax,sebze?,-,-,-,-,-,-
+taybet,şubat,-,-,-,-,-,-
+tebax,sabah,-,-,-,-,-,-
+têkber,terlik,-,-,-,-,-,-
+tekildar,terlik,-,-,-,-,-,-
+televizyon,mavi,-,-,-,-,-,-
+telkarî,gogus,-,-,-,-,-,-
+temam kirin,sarimsak,-,-,-,-,-,-
+temdarasevan,süt,-,-,-,-,-,-
+teral,tatli,-,-,-,-,-,-
+tevgerin,doğa,-,-,-,-,-,-
+tî,akşam yemeği,-,-,-,-,-,-
+tijî,hafif,-,-,-,-,-,-
+tilî,reş,-,-,-,-,-,-
+tirî,political,-,-,-,-,-,-
+tîrmeh,suyun isisini ayarlayan sey,-,-,-,-,-,-
+tirş,ayakkabi,-,-,-,-,-,-
+tivir,kırmızı,-,-,-,-,-,-
+to,beyaz,-,-,-,-,-,-
+tozmij,boyun,-,-,-,-,-,-
+tu,atkı,-,-,-,-,-,-
+turuncu,utangaç,-,-,-,-,-,-
+vegerin,kahvaltı,-,-,-,-,-,-
+wane,kahvaltı,-,-,-,-,-,-
+wate,mahalle,-,-,-,-,taxa,-
+watedar,özel,-,-,-,-,-,-
+wê demê,ağustos,-,-,-,-,-,-
+wêje,alet,-,-,-,-,-,-
+wêje/yî,"alakalı, ilgili",-,-,-,-,-,-
+wekî,televizyon,-,-,-,-,-,-
+wekî din,kuyumcu / gümüş ustası,-,-,-,-,-,-
+welatparêz,to finish,-,-,-,-,-,-
+wenesaz,izleyici,temdarasevanen,-,-,-,-,-
+wişne,yakışıklı,-,-,-,-,-,-
+xal,hareket etmek,-,-,-,-,-,-
+xaltî,susuz,-,-,-,-,-,-
+xaltîk,dolu,-,-,-,-,-,-
+xani,parmak,-,-,-,-,-,-
+xanî,uzum,-,-,-,-,-,-
+xelq,uzum,-,-,-,-,-,-
+xem nake,temmuz,-,-,-,-,-,-
+xera kirin,eksi,-,-,-,-,-,-
+xerîb,turp,-,-,-,-,-,-
+xew,kaymak,-,-,-,-,-,-
+xiyar,supurge,-,-,-,-,-,-
+xizan,hiç,-,-,-,-,-,-
+xizanî,mişmişî,-,-,-,-,-,-
+xort,dönmek,-,-,-,-,-,-
+xox,ders,-,-,-,-,-,-
+xurinî,anlam,-,-,-,-,-,-
+xwebûn,anlamlı,-,-,-,-,-,-
+xwedî,o zaman,-,-,-,-,-,-
+xwedîwate,edebiyat,-,-,-,-,-,-
+xwendar,edebiyat,-,-,-,-,-,-
+xwendekar,literature/literary,-,-,-,-,-,-
+xweşk,as,-,-,-,-,-,-
+xwîngerm,bunlardan baska,-,-,-,-,-,-
+xwişk,patriot,-,-,-,-,-,-
+ya din,vatansever,-,-,-,-,-,-
+yê / ya,ressam,-,-,-,-,-,-
+yek ji,"visne, kiraz",-,-,-,-,-,-
+yekşem,dayı,-,-,-,-,-,-
+yeşil,teyze,-,-,-,-,-,-
+zana,teyze,-,-,-,-,-,-
+zanîngeh,-,-,-,-,-,xaniye,-
+zarok,ev,-,-,-,-,-,-
+zarokatî,halk,-,-,-,-,-,-
+zebeş,dert degil,-,-,-,-,-,-
+zêde,"harap etmek, mahvetmek, bozmak",-,-,-,-,-,-
+zede dema me tune ye,gariban,-,-,-,-,-,-
+zelal,uyku,-,-,-,-,-,-
+zend,salatalik,-,-,-,-,-,-
+zer,yoksul,-,-,-,-,-,-
+zexm,yoksulluk,-,-,-,-,-,-
+zeytûn,genç,-,xortek,-,m,xorte,-
+zilam,seftali,-,-,-,-,-,-
+ziman,-,-,-,-,-,-,-
+zivistan,varlık,-,-,-,-,-,-
+Fîlozof,sahip,-,-,-,-,-,-
+Aborîzan,önemli,-,-,-,-,-,-
+Şoreşger,"okumuş, tahsilli",-,-,-,-,-,-
+Zaroktî,öğrenci,-,-,-,-,-,-
+Xwendin,güzel,-,-,-,-,-,-
+Dadgeh,"sıcakkanlı, sempatik, sevimli",-,-,-,-,-,-
+Rewşenbîr,kız kardeş,xwişken,xwişkek,-,f,xwişka,-
+Civakî,diğeri,-,-,-,-,-,-
+Sûrgûn,isim tamlaması için,-,-,-,-,-,-
+Hevkarî,one of,-,-,-,-,-,-
+Kapîtalîzm,pazar,-,-,-,-,-,-
+Burjuvazî,kesk,-,-,-,-,-,-
+Proletarya,"akıllı, bilgin",-,-,-,-,-,-
+Têkoşîn,üniversite,-,-,-,-,-,-
+Teorî,çocuk,-,-,-,-,-,-
+Mirin,childhood,-,-,-,-,-,-
+bûn,çocukluk,-,-,-,-,-,-
+kirin,karpuz,-,-,-,-,-,-
+jiyîn,fazla,-,-,-,-,-,-
+nivîsîn,-,-,-,-,-,-,-
+derketin,"açık, duru, şeffaf",-,-,-,-,-,-
+koç kirin,bilek,-,-,-,-,-,-
+nasîn,sari,-,-,-,-,-,-
+pêş xistin,sağlam,-,-,-,-,-,-
+disekinîn,zeytin,-,-,-,-,-,-
+dîtin,adam,-,zilamek,-,-,-,-
+derbas bûn,"dil, lisan",-,-,-,-,-,-
+parastin,kış,-,-,-,-,-,-
+,Filozof,-,-,-,-,-,-
+,Ekonomist,-,-,-,-,-,-
+,Devrimci,-,-,-,-,-,-
+,Çocukluk,-,-,-,-,-,-
+,Okuma/Eğitim,-,-,-,-,-,-
+,Mahkeme,-,-,-,-,-,-
+,Aile,-,-,-,-,-,-
+,Arkadaş,-,-,-,-,-,-
+,Aydın,-,-,-,-,-,-
+,Siyasi,-,-,-,-,-,-
+,Sosyal,-,-,-,-,-,-
+,Sürgün,-,-,-,-,-,-
+,İşbirliği,-,-,-,-,-,-
+,Eser,-,-,-,-,-,-
+,Kapitalizm,-,-,-,-,-,-
+,İşçi,-,-,-,-,-,-
+,Burjuvazi,-,-,-,-,-,-
+,Proletarya,-,-,-,-,-,-
+,Mücadele,-,-,-,-,-,-
+,Sınıf,-,-,-,-,-,-
+,Teori,-,-,-,-,-,-
+,Ölüm,-,-,-,-,-,-
+,olmak,-,-,-,-,-,-
+,yapmak,-,-,-,-,-,-
+,yaşamak,-,-,-,-,-,-
+,okumak,-,-,-,-,-,-
+,yazmak,-,-,-,-,-,-
+,büyümek,-,-,-,-,-,-
+,tamamlamak,-,-,-,-,-,-
+,çıkmak,-,-,-,-,-,-
+,göç etmek,-,-,-,-,-,-
+,tanımak,-,-,-,-,-,-
+,geliştirmek,-,-,-,-,-,-
+,durmak/odaklanmak,-,-,-,-,-,-
+,görmek,-,-,-,-,-,-
+,geçmek,-,-,-,-,-,-
+,korumak,-,-,-,-,-,-
